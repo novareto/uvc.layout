@@ -1,0 +1,29 @@
+Skin Doctest
+============
+
+:Test-Layer: functional
+
+Layout
+------
+
+First test if we have the right Layout for our Site:
+
+  >>> from zope.interface import Interface
+  >>> from zope.component import getMultiAdapter
+  >>> from megrok.layout import ILayout
+  >>> from zope.publisher.browser import TestRequest
+
+  >>> request = TestRequest()
+  >>> from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+  >>> IDefaultBrowserLayer.providedBy(request)
+  True
+
+  >>> layout = getMultiAdapter((request, Interface), ILayout)
+  >>> ILayout.providedBy(layout)
+  True
+
+Do we get the right Class
+
+  >>> layout
+  <uvc.layout.layout.Layout object at ...>
+
