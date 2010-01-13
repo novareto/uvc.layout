@@ -6,7 +6,7 @@
       i18n:domain="uvcsite">
 <head>
   <title>Extranet</title>
-  <span replace="structure provider:uvcsite.headers" />
+  <span tal:replace="structure provider:uvcsite.headers" />
 </head>
 
 <body>
