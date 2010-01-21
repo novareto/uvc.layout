@@ -13,7 +13,7 @@
   <div id="page">
     <div id="header">
        <span tal:replace="structure provider:uvcsite.logo" />
-       <span tal:replace="structure provider:uvcsite.globalmenu" />
+       <span tal:replace="structure provider:uvcsite.globalmenu" /> 
     </div>
 
     <div class="content">
@@ -35,6 +35,7 @@
          <span tal:replace="structure provider:uvcsite.personalpreferences"/>
          <span tal:replace="structure provider:uvcsite.breadcrumb"/>
          <div tal:content="structure provider:uvcsite.statusmessage"> </div>
+         <div class="documentActions" tal:content="structure provider:uvcsite.documentactions"/>
          <div tal:content="structure view/content"> </div>
       </div>
 
