@@ -3,6 +3,8 @@
 from zope.interface import Interface
 from grok.interfaces import IContainer
 
+class IAboveContent(Interface):
+    """ Marker For Headers"""
 
 class IHeaders(Interface):
     """ Marker For Headers"""

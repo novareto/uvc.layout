@@ -36,7 +36,12 @@
          <span tal:replace="structure provider:uvcsite.breadcrumb"/>
          <div tal:content="structure provider:uvcsite.statusmessage"> </div>
          <div class="documentActions" tal:content="structure provider:uvcsite.documentactions"/>
-         <div tal:content="structure view/content"> </div>
+         <div>
+          <div tal:content="structure provider:uvcsite.abovecontent"/>
+          <div class="css-panes"> 
+             <div tal:content="structure view/content"/>
+          </div>   
+         </div>
       </div>
 
       <div class="relax"> </div>

@@ -7,6 +7,10 @@ from zope.interface import Interface
 
 grok.templatedir('templates')
 
+class AboveContent(grok.ViewletManager):
+    grok.name('uvcsite.abovecontent')
+    grok.context(Interface)
+    grok.implements(IAboveContent)
 
 class DocumentActions(grok.ViewletManager):
     grok.name('uvcsite.documentactions')
