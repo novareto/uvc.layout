@@ -4,52 +4,44 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="uvcsite">
-<head>
-  <title>Extranet</title>
-  <span tal:replace="structure provider:uvcsite.headers" />
-</head>
-
-<body>
-  <div id="page">
-    <div id="header">
-       <span tal:replace="structure provider:uvcsite.logo" />
-       <span tal:replace="structure provider:uvcsite.globalmenu" /> 
-    </div>
-
-    <div class="content">
-      <div class="left-col">
-        <div class="box">
-            <span tal:define="sidebar provider:uvcsite.sidebar"
-                  tal:condition="sidebar" 
-                  tal:replace="structure sidebar"/>
-        </div>
-        <div class="box">
-           <span tal:define="help provider:uvcsite.help"
-                 tal:condition="help"
-                 tal:replace="structure help"/>
-        </div>
+  <head>
+    <title>Extranet</title>
+    <base href="" tal:attributes="href layout/base" />
+    <tal:resources tal:content="provider:dolmen.resources" />
+    <span tal:replace="structure provider:uvcsite.headers" />
+  </head>
+  
+  <body>
+    <div id="page">
+      <div id="header" tal:content="structure provider:dolmen.top" />
+      
+      <div class="content">
+	<div class="left-col">
+	  <div class="box">
+	    <span tal:define="sidebar provider:uvcsite.sidebar"
+		  tal:condition="sidebar" 
+		  tal:replace="structure sidebar"/>
+	  </div>
+	  <div class="box">
+	    <span tal:define="help provider:uvcsite.help"
+		  tal:condition="help"
+		  tal:replace="structure help"/>
+	  </div>
+	</div>
+	
+	<div class="right-col">
+	  <div tal:content="structure provider:uvcsite.abovecontent" />
+	  <div class="css-panes"> 
+	    <div tal:content="structure view/content"/>
+	  </div>
+	  <div tal:content="structure provider:dolmen.below.body" />
+	</div>
       </div>
-
-
-      <div class="right-col">
-         <span tal:replace="structure provider:uvcsite.personalpreferences"/>
-         <span tal:replace="structure provider:uvcsite.breadcrumb"/>
-         <div tal:content="structure provider:uvcsite.statusmessage"> </div>
-         <div class="documentActions" tal:content="structure provider:uvcsite.documentactions"/>
-         <div>
-          <div tal:content="structure provider:uvcsite.abovecontent"/>
-          <div class="css-panes"> 
-             <div tal:content="structure view/content"/>
-          </div>   
-         </div>
-      </div>
-
+      
       <div class="relax"> </div>
     </div>
     <div class="footer" tal:content="structure provider:uvcsite.footer">
       Footer goes here
     </div>
-  </div>
-</body>
+  </body>
 </html>
-

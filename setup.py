@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0'
+version = '1.1'
 
 setup(name='uvc.layout',
       version=version,
@@ -25,10 +25,9 @@ setup(name='uvc.layout',
           'setuptools',
           'z3c.testsetup',
           'grok',
-          'megrok.layout',
-          'z3c.flashmessage',
-          'z3c.breadcrumb',
-          # -*- Extra requirements: -*-
+          'megrok.layout >= 1.0.1',
+          'dolmen.app.layout >= 0.5',
+          'dolmen.app.breadcrumbs >= 0.2',
       ],
       entry_points="""
       # -*- Entry points: -*-

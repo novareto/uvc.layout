@@ -3,11 +3,17 @@
 # cklinger@novareto.de 
 
 import grok
-import megrok.layout
-
+from dolmen.app.layout import master, skin
 from zope.interface import Interface
 
 grok.templatedir('layout_templates')
 
-class Layout(megrok.layout.Layout):
-    grok.context(Interface)
+
+class IUVCLayer(skin.IBaseLayer):
+    """Base skin layer for an UVC Site
+    """
+
+
+class Layout(master.Master):
+    grok.layer(IUVCLayer)
+    grok.name('uvc.layout')
