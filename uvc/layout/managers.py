@@ -25,7 +25,7 @@ class AboveContent(master.AboveBody):
 class BelowContent(master.BelowBody):
     grok.name('uvcsite.belowcontent')
     grok.context(Interface)
-    grok.implements(IAboveContent)
+    grok.implements(IBelowContent)
 
 
 class Footer(master.Footer):
@@ -37,10 +37,13 @@ class Footer(master.Footer):
     grok.require('zope.View')
 
 
-class GlobalMenu(grok.ViewletManager):
-    grok.name('uvcsite.globalmenu')
+class PageTop(master.Top):
+    """ViewletManager for the PageTop
+    """
+    grok.name('uvcsite.pagetop')
     grok.context(Interface)
-    grok.implements(IGlobalMenu)
+    grok.implements(IPageTop)
+    grok.require('zope.View')
 
     css = ['blue', 'orange', 'violet', 'green', 'brown', 'purple']
 

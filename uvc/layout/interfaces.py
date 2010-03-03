@@ -3,8 +3,18 @@
 from zope.interface import Interface
 
 
+class IPageTop(Interface):
+    """Marker For the area that sits at the top of the page.
+    """
+
+
 class IAboveContent(Interface):
-    """Marker For Headers
+    """Marker For the area that sits above the page body.
+    """
+
+
+class IBelowContent(Interface):
+    """Marker For the area that sits under the page body.
     """
 
 
@@ -18,8 +28,23 @@ class IToolbar(Interface):
     """
 
 
+class IDocumentActions(Interface):
+    """Marker for DocumentActions
+    """
+
+
+class IPersonalPreferences(Interface):
+    """Marker for PersonalPreferences
+    """
+
+
 class IGlobalMenu(Interface):
     """Marker for GlobalMenu
+    """
+
+
+class IPersonalMenu(Interface):
+    """Marker for PersonalMenu
     """
 
 

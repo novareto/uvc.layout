@@ -13,8 +13,8 @@
   
   <body>
     <div id="page">
-      <div id="header" tal:content="structure provider:dolmen.top" />
-      
+      <div id="pagetop" tal:content="structure provider:uvcsite.pagetop" />
+
       <div class="content">
 	<div class="left-col">
 	  <div class="box">
@@ -34,7 +34,7 @@
 	  <div class="css-panes"> 
 	    <div tal:content="structure view/content"/>
 	  </div>
-	  <div tal:content="structure provider:dolmen.below.body" />
+	  <div tal:content="structure provider:uvcsite.belowcontent" />
 	</div>
       </div>
       
