@@ -1,7 +1,4 @@
-<ul class="miniman"
-    tal:define="tabs viewletmanager/viewlets"
-    tal:condition="tabs">
-    <li tal:repeat="tab tabs">
-       <span tal:replace="structure tab/render"> </span>
-    </li>
-</ul>    
+<ul id="personal-menu">
+  <li tal:repeat="tab viewletmanager/viewlets"
+      tal:content="structure tab/render" />
+</ul>

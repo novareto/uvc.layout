@@ -32,21 +32,23 @@ class PersonalPreferences(grok.ViewletManager):
     grok.implements(IPersonalPreferences)
 
 
-class TopMenus(grok.Viewlet):
+class GlobalMenuViewlet(grok.Viewlet):
     grok.context(Interface)
     grok.viewletmanager(IPageTop)
     grok.order(10)
 
-    def update(self):
-        self.menus = []
-        discriminants = (self.context, self.request, self.view)
-        menus = ['uvc.global.menu', 'uvc.user.menu', 'uvc.user.preferences']
-        for menu in menus:
-            manager = queryMultiAdapter(discriminants, name=menu)
-            if manager is not None:
-                manager.update()
-                self.menus.append(manager.render())
+    def render(self):
+        menu = GlobalMenu(self.context, self.request, self.view)
+        menu.update()
+        return menu.render()
+    
+
+class PreferencesViewlet(grok.Viewlet):
+    grok.context(Interface)
+    grok.viewletmanager(IPageTop)
+    grok.order(50)
 
     def render(self):
-        return u"".join(self.menus)
-    
+        menu = PersonalPreferences(self.context, self.request, self.view)
+        menu.update()
+        return menu.render()

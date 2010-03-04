@@ -15,33 +15,29 @@
     <div id="page">
       <div id="pagetop" tal:content="structure provider:uvcsite.pagetop" />
 
-      <div class="content">
-	<div class="left-col">
-	  <div class="box">
-	    <span tal:define="sidebar provider:uvcsite.sidebar"
-		  tal:condition="sidebar" 
-		  tal:replace="structure sidebar"/>
-	  </div>
-	  <div class="box">
-	    <span tal:define="help provider:uvcsite.help"
-		  tal:condition="help"
-		  tal:replace="structure help"/>
-	  </div>
+      <div id="content">
+
+	<div id="page-panels">
+	  <div id="sidebar" class="panel"
+	       tal:content="structure provider:uvcsite.sidebar" />
+	  <tal:help content="structure provider:uvcsite.panels" />
 	</div>
 	
-	<div class="right-col">
-	  <div tal:content="structure provider:uvcsite.abovecontent" />
-	  <div class="css-panes"> 
-	    <div tal:content="structure view/content"/>
-	  </div>
-	  <div tal:content="structure provider:uvcsite.belowcontent" />
+	<div id="inner-page">
+	  <div id="above-page"
+	      tal:content="structure provider:uvcsite.abovecontent" />
+
+	  <div id="page-body"
+	      tal:content="structure view/content"/>
+
+	  <div id="below-page" 
+	      tal:content="structure provider:uvcsite.belowcontent" />
 	</div>
       </div>
-      
-      <div class="relax"> </div>
-    </div>
-    <div class="footer" tal:content="structure provider:uvcsite.footer">
-      Footer goes here
+
+      <div id="footer" tal:content="structure provider:uvcsite.footer">
+	Footer goes here
+      </div>
     </div>
   </body>
 </html>

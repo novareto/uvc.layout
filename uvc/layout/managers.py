@@ -47,13 +47,12 @@ class PageTop(master.Top):
 
 
 class Sidebar(grok.ViewletManager):
-    """ ViewletManager for the Sidebar """
     grok.name('uvcsite.sidebar')
     grok.context(Interface)
     grok.implements(ISidebar)
+    
 
-
-class Help(grok.ViewletManager):
-    grok.name('uvcsite.help')
+class Panels(grok.ViewletManager):
+    grok.name('uvcsite.panels')
     grok.context(Interface)
     grok.implements(IHelp)
