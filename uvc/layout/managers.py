@@ -45,11 +45,6 @@ class PageTop(master.Top):
     grok.implements(IPageTop)
     grok.require('zope.View')
 
-    css = ['blue', 'orange', 'violet', 'green', 'brown', 'purple']
-
-    def getClass(self, index):
-        return self.css[index]
-
 
 class Sidebar(grok.ViewletManager):
     """ ViewletManager for the Sidebar """
