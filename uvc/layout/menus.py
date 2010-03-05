@@ -60,41 +60,37 @@ class GlobalMenuViewlet(grok.Viewlet):
         self.menu.update()
     
 
-class PreferencesViewlet(grok.Viewlet):
+class PreferencesViewlet(PersonalPreferences):
+    grok.name('user-preferences')
     grok.viewletmanager(interfaces.IPageTop)
     grok.order(50)
 
-    def render(self):
-        menu = PersonalPreferences(self.context, self.request, self.view)
-        menu.update()
-        return menu.render()
+    def __init__(self, context, request, view, manager):
+        PersonalPreferences.__init__(self, context, request, view)
+ 
 
-
-class DocumentActionsViewlet(grok.Viewlet):
+class DocumentActionsViewlet(DocumentActionsMenu):
+    grok.name('document-actions')
     grok.viewletmanager(interfaces.IAboveContent)
     grok.order(10)
 
-    def render(self):
-        menu = DocumentActionsMenu(self.context, self.request, self.view)
-        menu.update()
-        return menu.render()
+    def __init__(self, context, request, view, manager):
+        DocumentActionsMenu.__init__(self, context, request, view)
 
 
-class SidebarViewlet(grok.Viewlet):
+class SidebarViewlet(SidebarMenu):
+    grok.name('sidebar')
     grok.viewletmanager(interfaces.IPanels)
     grok.order(10)
 
-    def render(self):
-        menu = SidebarMenu(self.context, self.request, self.view)
-        menu.update()
-        return menu.render()
+    def __init__(self, context, request, view, manager):
+        SidebarMenu.__init__(self, context, request, view)
 
 
-class HelpViewler(grok.Viewlet):
+class HelpViewler(HelpMenu):
+    grok.name('help')
     grok.viewletmanager(interfaces.IPanels)
     grok.order(20)
 
-    def render(self):
-        menu = HelpMenu(self.context, self.request, self.view)
-        menu.update()
-        return menu.render()
+    def __init__(self, context, request, view, manager):
+        HelpMenu.__init__(self, context, request, view)
