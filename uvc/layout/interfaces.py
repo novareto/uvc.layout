@@ -57,6 +57,9 @@ class IFooter(Interface):
     """Marker for Footer
     """
 
+class IPanels(Interface):
+    """Marker interface for the panels display.
+    """
 
 class IHelp(Interface):
     """Marker for Help

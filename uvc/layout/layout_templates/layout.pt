@@ -13,15 +13,13 @@
   
   <body>
     <div id="page">
-      <div id="pagetop" tal:content="structure provider:uvcsite.pagetop" />
-
+      <div id="pagetop"
+	   tal:content="structure provider:uvcsite.pagetop" />
+      
       <div id="content">
-
-	<div id="page-panels">
-	  <div id="sidebar" class="panel"
-	       tal:content="structure provider:uvcsite.sidebar" />
-	  <tal:help content="structure provider:uvcsite.panels" />
-	</div>
+	
+	<div id="page-panels"
+	     tal:content="structure provider:uvcsite.panels" />
 	
 	<div id="inner-page">
 	  <div id="above-page"

@@ -46,13 +46,9 @@ class PageTop(master.Top):
     grok.require('zope.View')
 
 
-class Sidebar(grok.ViewletManager):
-    grok.name('uvcsite.sidebar')
-    grok.context(Interface)
-    grok.implements(ISidebar)
-    
-
 class Panels(grok.ViewletManager):
     grok.name('uvcsite.panels')
     grok.context(Interface)
-    grok.implements(IHelp)
+    grok.implements(IPanels)
+    grok.require('zope.View')
+

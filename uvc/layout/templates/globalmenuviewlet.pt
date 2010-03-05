@@ -1,0 +1,14 @@
+<dl tal:condition="viewlet/menu/viewlets"
+    tal:attributes="id viewlet/menu/id;
+		    class viewlet/menu/menu_class;">
+  <dd>
+    <ul>
+      <tal:tab repeat="action viewlet/menu/viewlets">
+	<li tal:attributes="class python:viewlet.getClass(
+                                           repeat['action'].index())">
+	  <tal:entry content="structure action/render" />
+	</li>
+	</tal:tab>
+    </ul>
+  </dd>
+</dl>
