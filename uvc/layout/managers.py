@@ -3,7 +3,8 @@
 import grok
 from uvc.layout.interfaces import *
 from zope.interface import Interface
-from dolmen.app.layout import master 
+from dolmen import menu
+from dolmen.app.layout import master
 
 grok.templatedir('templates')
 
@@ -26,15 +27,6 @@ class BelowContent(master.BelowBody):
     grok.name('uvcsite.belowcontent')
     grok.context(Interface)
     grok.implements(IBelowContent)
-
-
-class Footer(master.Footer):
-    """ViewletManager for the Footer
-    """
-    grok.name('uvcsite.footer')
-    grok.context(Interface)
-    grok.implements(IFooter)
-    grok.require('zope.View')
 
 
 class PageTop(master.Top):

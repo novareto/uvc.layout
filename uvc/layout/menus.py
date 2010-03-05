@@ -40,3 +40,9 @@ class HelpMenu(menu.Menu):
 class DocumentActionsMenu(menu.Menu):
     grok.name("uvc.user.documentactions")
     grok.implements(interfaces.IDocumentActions)
+
+
+class Footer(menu.Menu):
+    grok.name('uvcsite.footer')
+    grok.implements(interfaces.IFooter)
+    grok.require('zope.View')
