@@ -1,4 +1,4 @@
-<tal:panels>
+<tal:panels tal:condition="viewletmanager/viewlets">
   <div class="box-top">
     <h1>
       <img src="/@@/uvc.skin/blue-sep.gif" />
