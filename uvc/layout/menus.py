@@ -39,4 +39,4 @@ class HelpMenu(menu.Menu):
 
 class DocumentActionsMenu(menu.Menu):
     grok.name("uvc.user.documentactions")
-    grok.implements(interfaces.IFooter)
+    grok.implements(interfaces.IDocumentActions)
