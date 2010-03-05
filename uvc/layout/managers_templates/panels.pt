@@ -1,5 +1,0 @@
-<tal:panels>
-  <div class="panel" tal:repeat="panel viewletmanager/viewlets">
-    <span tal:content="panel/render" />
-  </div>
-</tal:panels>
