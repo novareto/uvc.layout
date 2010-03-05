@@ -1,11 +1,4 @@
 <tal:panels tal:condition="viewletmanager/viewlets">
-  <div class="box-top">
-    <h1>
-      <img src="/@@/uvc.skin/blue-sep.gif" />
-      Help 
-    </h1>
-    <div class="separator"></div>
-  </div>
   <div class="panel" tal:repeat="panel viewletmanager/viewlets">
     <span tal:content="structure panel/render" />
   </div>

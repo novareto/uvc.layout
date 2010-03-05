@@ -51,4 +51,3 @@ class Panels(grok.ViewletManager):
     grok.context(Interface)
     grok.implements(IPanels)
     grok.require('zope.View')
-
