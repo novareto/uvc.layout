@@ -1,4 +1,0 @@
-<ul id="personal-menu">
-  <li tal:repeat="tab viewletmanager/viewlets"
-      tal:content="structure tab/render" />
-</ul>
