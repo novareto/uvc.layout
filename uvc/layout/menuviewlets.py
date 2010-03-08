@@ -40,10 +40,10 @@ class DocumentActionsViewlet(grok.Viewlet):
     grok.viewletmanager(interfaces.IAboveContent)
     grok.order(10)
 
-    def render(self):
-        menu = menus.DocumentActionsMenu(self.context, self.request, self.view)
-        menu.update()
-        return menu.render()
+    def update(self):
+        self.menu = menus.DocumentActionsMenu(
+            self.context, self.request, self.view)
+        self.menu.update()
 
 
 class SidebarViewlet(grok.Viewlet):
