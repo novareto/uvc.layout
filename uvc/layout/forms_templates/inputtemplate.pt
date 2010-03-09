@@ -8,6 +8,7 @@
       <span tal:content="view/description" />
     </p>   
   </div>
+  <div class="tooltip"></div>
   <form action="." method="post" enctype="multipart/form-data" class="edit-form"
 	metal:define-macro="form"
 	tal:attributes="method view/method;
@@ -58,7 +59,7 @@
 		    <span tal:replace="widget/label"/>
 		    <span class="required" tal:condition="widget/required"
 			  >*</span>
-		    <span class="small" tal:content="widget/title"/>
+		   <!-- <span class="small" tal:content="widget/title"/>-->
                 </label>      
 		<div class="widget" tal:content="structure widget/render">
 		  <input type="text" size="24" value="" />
