@@ -25,5 +25,5 @@ First test if we have the right Layout for our Site:
 Do we get the right Class
 
   >>> layout
-  <uvc.layout.layout.Layout object at ...>
+  <dolmen.app.layout.master.Master object ...>
 

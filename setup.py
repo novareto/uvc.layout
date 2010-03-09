@@ -30,6 +30,9 @@ setup(name='uvc.layout',
           'megrok.layout >= 1.0.1',
           'dolmen.app.layout >= 0.5',
           'dolmen.app.breadcrumbs >= 0.2',
+          'zope.app.testing',
+          'zope.testbrowser',
+          'uvc.skin',
       ],
       entry_points="""
       # -*- Entry points: -*-
