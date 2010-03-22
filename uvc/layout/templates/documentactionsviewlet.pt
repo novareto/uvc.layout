@@ -5,7 +5,10 @@
     <ul>
       <tal:tab repeat="action viewlet/menu/viewlets">
 	<li tal:attributes="class python:action.__name__.replace('.', '-')">
-	  <span tal:content="structure action/render" />
+	  <a href="" tal:attributes="href action/url;
+				     alt action/title;">
+	    <span tal:content="action/title" />
+	  </a>
 	</li>
 	</tal:tab>
     </ul>
