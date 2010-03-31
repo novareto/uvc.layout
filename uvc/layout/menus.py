@@ -34,7 +34,7 @@ class SidebarMenu(menu.Menu):
 
 class HelpMenu(menu.Menu):
     grok.name("uvc.user.help")
-    grok.titel("Hilfe")
+    grok.title("Hilfe")
     grok.implements(interfaces.IHelp)
 
 
