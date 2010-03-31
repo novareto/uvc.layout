@@ -7,7 +7,7 @@
 	<li tal:attributes="class python:action.__name__.replace('.', '-')">
 	  <a href="" tal:attributes="href action/url;
 				     alt action/title;">
-	    <span tal:content="action/title" />
+	    <span tal:content="action/title" /> &nbsp; 
 	  </a>
 	</li>
 	</tal:tab>
