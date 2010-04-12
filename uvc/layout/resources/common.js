@@ -1,3 +1,4 @@
+/*
 $(document).ready(function() {
 
     jQuery.fn.inputChoice = function(params) {
@@ -26,7 +27,7 @@ $(document).ready(function() {
 		something: "Another value"
 	    }
 
-	    /*$.ajax({
+	    $.ajax({
 		type: "GET",
 		url: ,
 		dataType: "json",
@@ -37,7 +38,7 @@ $(document).ready(function() {
 			vocabulary = data.items;
 		    } 
 		}
-	    });*/
+	    });
 
 	    var option = self.attr('id');
  	    var id = 'choice-' + option;
@@ -140,11 +141,9 @@ $(document).ready(function() {
 		cssProp.left = '50%';
 		cssProp.marginLeft = halfWidth;
 	    }
-	    //check the current position
 	    if(positionType == 'static') {
 		$self.parent().css("position","relative");
 	    }
-	    //aplying the css
 	    $self.css(cssProp);
 	});
     };
@@ -166,3 +165,4 @@ $(document).ready(function() {
     $('input#form-widgets-unfuort').inputChoice();
 
 });
+*/
