@@ -59,7 +59,7 @@
 		    <span tal:replace="widget/label"/>
 		    <span class="required" tal:condition="widget/required"
 			  >*</span>
-		   <!-- <span class="small" tal:content="widget/title"/>-->
+		    <span class="small" tal:content="widget/title"/>
                 </label>      
 		<div class="widget" tal:content="structure widget/render">
 		  <input type="text" size="24" value="" />
