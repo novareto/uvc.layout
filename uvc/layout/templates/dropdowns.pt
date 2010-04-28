@@ -1,0 +1,16 @@
+<div>
+  <tal:entries tal:define="categories viewletmanager/get_categories"
+	       tal:repeat="cat categories">
+
+    <dl class="dropdown">
+      <dt tal:content="cat/title" />
+      <dd>
+	<ul>
+	  <li tal:repeat="entry cat/entries">
+	    <tal:entry content="structure entry/render" />
+	  </li>
+	</ul>
+      </dd>
+
+  </tal:entries>
+</div>
