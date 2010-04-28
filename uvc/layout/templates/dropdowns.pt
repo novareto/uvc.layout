@@ -1,4 +1,4 @@
-<div>
+<div id="uvc-global-menu">
   <tal:entries tal:define="categories viewletmanager/get_categories"
 	       tal:repeat="cat categories">
 

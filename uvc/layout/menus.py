@@ -24,22 +24,6 @@ class GlobalMenu(menu.Menu):
     grok.name("uvc.global.menu")
     grok.implements(interfaces.IGlobalMenu)
 
-
-class PersonalMenu(menu.Menu):
-    grok.name("uvc.user.menu")
-    grok.implements(interfaces.IPersonalMenu)
-    
-
-class PersonalPreferences(menu.Menu):
-    grok.name("uvc.user.preferences")
-    grok.implements(interfaces.IPersonalPreferences)
-
-
-class SidebarMenu(menu.Menu):
-    grok.name("uvc.user.sidebar")
-    grok.title("Navigation")
-    grok.implements(interfaces.ISidebar)
-
     categories = None
 
     def get_categories(self):
@@ -63,8 +47,18 @@ class SidebarMenu(menu.Menu):
         self.categories = self.sort_by_keyword()
 
 
+class PersonalMenu(menu.Menu):
+    grok.name("uvc.user.menu")
+    grok.implements(interfaces.IPersonalMenu)
+    
+
+class PersonalPreferences(menu.Menu):
+    grok.name("uvc.user.preferences")
+    grok.implements(interfaces.IPersonalPreferences)
+
+
 class Dropdowns(PageTemplate):
-    view(SidebarMenu)
+    view(GlobalMenu)
 
 
 class HelpMenu(menu.Menu):

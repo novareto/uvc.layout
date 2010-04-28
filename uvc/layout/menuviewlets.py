@@ -14,14 +14,10 @@ class GlobalMenuViewlet(grok.Viewlet):
     grok.viewletmanager(interfaces.IPageTop)
     grok.order(10)
 
-    css = ['blue', 'orange', 'violet', 'green', 'brown', 'purple']
-
-    def getClass(self, index):
-        return self.css[index]
-
-    def update(self):
+    def render(self):
         self.menu = menus.GlobalMenu(self.context, self.request, self.view)
         self.menu.update()
+        return self.menu.render()
     
 
 class PreferencesViewlet(grok.Viewlet):
@@ -31,16 +27,6 @@ class PreferencesViewlet(grok.Viewlet):
 
     def render(self):
         menu = menus.PersonalPreferences(self.context, self.request, self.view)
-        menu.update()
-        return menu.render()
-
-
-class SidebarViewlet(grok.Viewlet):
-    grok.viewletmanager(interfaces.IPageTop)
-    grok.order(60)
-
-    def render(self):
-        menu = menus.SidebarMenu(self.context, self.request, self.view)
         menu.update()
         return menu.render()
 

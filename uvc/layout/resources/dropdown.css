@@ -1,9 +1,5 @@
 /* Dropdown menu */
 
-dl.dropdown {
-  width: 15em;
-}
-
 dl.unfolding dt {
   background-color: #f9f9f9 !important;
 }
@@ -12,7 +8,6 @@ dl.dropdown dt {
   background: white url();
   font-weight: bold;
   padding: 0.2em 0.4em 0.3em 0.4em;
-  border: 1px solid #cbcbcb;
   color: #555;
 }
 
@@ -21,6 +16,7 @@ dl.dropdown dd {
   display: none;
   position: absolute;
   background-color: white;
+  margin-top: 23px;
 }
 
 dl.dropdown dd ul { 
