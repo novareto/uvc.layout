@@ -64,3 +64,7 @@ class IPanels(Interface):
 class IHelp(Interface):
     """Marker for Help
     """
+
+class IExtraInfo(Interface):
+    """Marker for ExtraInfo in Forms
+    """

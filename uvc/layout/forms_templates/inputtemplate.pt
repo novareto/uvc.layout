@@ -47,6 +47,7 @@
 	</metal:block>
 	<div metal:define-slot="extra-info" tal:replace="nothing">
 	</div>
+        <div tal:replace="structure provider:uvc.layout.extrainfo"/>
 	<div metal:define-slot="main">
 	  <metal:block define-macro="widget-rows">
 	    <tal:block repeat="widget view/widgets/values">

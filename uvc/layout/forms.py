@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
+import grok
 import megrok.pagetemplate as pt
 from grokcore.view import layer
 from uvc.skin.skin import IUVCSkin
 from z3c.form.interfaces import IInputForm
 from dolmen.app.layout.models import DefaultView
+from uvc.layout.interfaces import IExtraInfo
 
 
 class DisplayTemplate(pt.PageTemplate):
@@ -19,3 +21,8 @@ class InputTemplate(pt.PageTemplate):
     """
     layer(IUVCSkin)
     pt.view(IInputForm)
+
+
+class ExtraInfo(grok.ViewletManager):
+    grok.implements(IExtraInfo)
+    grok.name('uvc.layout.extrainfo')
