@@ -11,3 +11,9 @@ class UVCLayoutResources(resource.Library):
 
 common = resource.ResourceInclusion(
     UVCLayoutResources, 'common.js', depends=[jquery])
+
+dropdown_js = resource.ResourceInclusion(
+    UVCLayoutResources, 'dropdown.js', depends=[jquery])
+
+dropdown = resource.ResourceInclusion(
+    UVCLayoutResources, 'dropdown.css', depends=[jquery, dropdown_js])

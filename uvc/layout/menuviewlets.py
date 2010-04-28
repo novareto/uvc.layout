@@ -35,6 +35,16 @@ class PreferencesViewlet(grok.Viewlet):
         return menu.render()
 
 
+class SidebarViewlet(grok.Viewlet):
+    grok.viewletmanager(interfaces.IPageTop)
+    grok.order(60)
+
+    def render(self):
+        menu = menus.SidebarMenu(self.context, self.request, self.view)
+        menu.update()
+        return menu.render()
+
+
 class DocumentActionsViewlet(grok.Viewlet):
     grok.name('document-actions')
     grok.viewletmanager(interfaces.IAboveContent)
@@ -44,16 +54,6 @@ class DocumentActionsViewlet(grok.Viewlet):
         self.menu = menus.DocumentActionsMenu(
             self.context, self.request, self.view)
         self.menu.update()
-
-
-class SidebarViewlet(grok.Viewlet):
-    grok.viewletmanager(interfaces.IPanels)
-    grok.order(10)
-
-    def render(self):
-        menu = menus.SidebarMenu(self.context, self.request, self.view)
-        menu.update()
-        return menu.render()
 
 
 class HelpViewlet(grok.Viewlet):

@@ -7,6 +7,7 @@ from dolmen import menu
 from zope.component import queryMultiAdapter
 from zope.interface import Interface
 from uvc.layout import interfaces
+from uvc.layout import libraries
 from megrok.pagetemplate import PageTemplate, view
 
 grok.templatedir('templates')
@@ -49,7 +50,7 @@ class SidebarMenu(menu.Menu):
     def sort_by_keyword(self):
         categories = {}
         for viewlet in self.viewlets:
-            name = category.bind(default=u'').get(viewlet)
+            name = category.bind(default=u'Generic (change me)').get(viewlet)
             cat = categories.get(name)
             if cat is None:
                 cat = categories[name] = []
@@ -57,6 +58,7 @@ class SidebarMenu(menu.Menu):
         return categories
 
     def update(self):
+        libraries.dropdown.need()
         menu.Menu.update(self)
         self.categories = self.sort_by_keyword()
 
