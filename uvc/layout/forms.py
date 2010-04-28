@@ -7,6 +7,7 @@ from uvc.skin.skin import IUVCSkin
 from z3c.form.interfaces import IInputForm
 from dolmen.app.layout.models import DefaultView
 from uvc.layout.interfaces import IExtraInfo
+from zope.interface import Interface
 
 
 class DisplayTemplate(pt.PageTemplate):
@@ -26,3 +27,4 @@ class InputTemplate(pt.PageTemplate):
 class ExtraInfo(grok.ViewletManager):
     grok.implements(IExtraInfo)
     grok.name('uvc.layout.extrainfo')
+    grok.context(Interface)
