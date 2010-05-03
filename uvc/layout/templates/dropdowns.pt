@@ -2,7 +2,9 @@
   <tal:entries tal:define="categories viewletmanager/get_categories"
 	       tal:repeat="cat categories">
 
-    <dl class="dropdown">
+    <dl class="dropdown" 
+        tal:define="num repeat/cat/number"
+        tal:attributes="class python: 'dropdown ' +viewletmanager.getClass(num)"> 
       <dt tal:content="cat/title" />
       <dd>
 	<ul>
@@ -11,6 +13,6 @@
 	  </li>
 	</ul>
       </dd>
-
+     </dl>
   </tal:entries>
 </div>

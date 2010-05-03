@@ -51,3 +51,14 @@ class HelpViewlet(grok.Viewlet):
         menu = menus.HelpMenu(self.context, self.request, self.view)
         menu.update()
         return menu.render()
+
+
+class SidebarViewlet(grok.Viewlet):
+    grok.viewletmanager(interfaces.IPanels)
+    grok.order(10)
+
+    def render(self):
+        menu = menus.SidebarMenu(self.context, self.request, self.view)
+        menu.update()
+        return menu.render()
+

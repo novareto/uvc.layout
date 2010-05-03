@@ -4,8 +4,8 @@ dl.unfolding dt {
   background-color: #f9f9f9 !important;
 }
 
-dl.dropdown dt {
-  background: white url();
+#uvc-global-menu dl.dropdown dt {
+  background: url(menu-blue-bg.gif);
   font-weight: bold;
   padding: 0.2em 0.4em 0.3em 0.4em;
   color: #555;

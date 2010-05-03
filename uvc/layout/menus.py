@@ -26,6 +26,12 @@ class GlobalMenu(menu.Menu):
 
     categories = None
 
+    css = ['blue', 'orange', 'violet', 'green', 'brown', 'purple']
+
+    def getClass(self, index):
+        return self.css[index]
+
+
     def get_categories(self):
         if self.categories is not None:
             for name, items in self.categories.items():
@@ -34,7 +40,7 @@ class GlobalMenu(menu.Menu):
     def sort_by_keyword(self):
         categories = {}
         for viewlet in self.viewlets:
-            name = category.bind(default=u'Generic (change me)').get(viewlet)
+            name = category.bind('Info').get(viewlet)
             cat = categories.get(name)
             if cat is None:
                 cat = categories[name] = []
@@ -42,7 +48,7 @@ class GlobalMenu(menu.Menu):
         return categories
 
     def update(self):
-        libraries.dropdown.need()
+        libraries.dropdown_js.need()
         menu.Menu.update(self)
         self.categories = self.sort_by_keyword()
 
@@ -76,3 +82,9 @@ class Footer(menu.Menu):
     grok.name('uvcsite.footer')
     grok.implements(interfaces.IFooter)
     grok.require('zope.View')
+
+
+class SidebarMenu(menu.Menu):
+    grok.name('uvc.user.sidebar')
+    grok.title('Navigation')
+    grok.implements(interfaces.ISidebar)
