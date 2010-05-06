@@ -4,7 +4,7 @@
 	tal:content="view/label">
       Form Label
     </h1>
-    <p tal:condition="view/description|nothing">
+    <p class="big" tal:condition="view/description|nothing">
       <span tal:content="view/description" />
     </p>   
   </div>
@@ -57,7 +57,7 @@
 		   tal:condition="python:widget.mode != 'hidden'">
 		<metal:block define-macro="widget-row">
 		  <label>
-		    <span tal:replace="widget/label"/>
+		    <span class="label" tal:content="widget/label"/>
 		    <span class="required" tal:condition="widget/required"
 			  >*</span>
 		    <span class="small" tal:content="widget/title"/>
