@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.2dev'
+version = '1.2'
 
 setup(name='uvc.layout',
       version=version,
@@ -15,7 +15,7 @@ setup(name='uvc.layout',
       keywords='',
       author='Christian Klinger',
       author_email='cklinger@novareto.de',
-      url='',
+      url='http://www.novareto.de',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['uvc'],
