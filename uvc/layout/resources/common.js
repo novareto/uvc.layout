@@ -28,7 +28,7 @@ $(document).ready(function() {
 
             $.ajax({
                 type: "GET",
-                url: ,
+                url: targetURL,
                 dataType: "json",
                 async: false,
                 success: function(data) {
