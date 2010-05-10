@@ -1,6 +1,20 @@
-/*
 $(document).ready(function() {
+    $('body').append("<div id='loader'>&nbsp;</div>");
+    
+    $('body').ajaxStart(function() {
+	loader = $("#loader");
+	loader.addClass('loading');
+	loader.center();
+	loader.show();
+    });
 
+    $("#loader").ajaxStop(function() {
+	$(this).removeClass('loading');
+	$(this).hide();
+    }); 
+});
+
+/*
     jQuery.fn.inputChoice = function(params) {
 	var options = {
 	    allowOwnInput: true,
@@ -148,19 +162,6 @@ $(document).ready(function() {
 	});
     };
 
-    $('body').append("<div id='loader'>&nbsp;</div>");
-    
-    $('body').ajaxStart(function() {
-	loader = $("#loader");
-	loader.addClass('loading');
-	loader.center();
-	loader.show();
-    });
-
-    $("#loader").ajaxStop(function() {
-	$(this).removeClass('loading');
-	$(this).hide();
-    }); 
 
     $('input#form-widgets-unfuort').inputChoice();
 

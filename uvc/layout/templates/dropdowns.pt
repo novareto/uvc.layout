@@ -1,7 +1,6 @@
 <div id="uvc-global-menu">
   <tal:entries tal:define="categories viewletmanager/get_categories"
 	       tal:repeat="cat categories">
-
     <dl class="dropdown" 
         tal:define="num repeat/cat/number"
         tal:attributes="class python: 'dropdown ' +viewletmanager.getClass(num)"> 
