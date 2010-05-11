@@ -23,24 +23,23 @@
       <div class="viewspace" metal:define-slot="viewspace">
 	<metal:block define-slot="header">
 	  <div class="status"
+               id="header-status"
 	       tal:condition="view/status"
 	       metal:define-macro="header">
-	    <div class="summary"
-		 i18n:translate=""
-		 tal:content="view/status">
-	      Form status summary
+	    <div class="summary">
+               <dt> </dt>
+	       <dd i18n:translate=""
+		   tal:content="view/status" />
 	    </div>
-	    
 	    <ul class="errors"
-		tal:replace="nothing"
 		tal:condition="view/widgets/errors"
 		metal:define-macro="errors">
-          <li tal:repeat="error view/widgets/errors">
-	    <tal:block condition="error/widget">
-	      <span tal:replace="error/widget/label" />:
-	    </tal:block>
-	    <span tal:replace="structure error/render">Error Type</span>
-	  </li>
+              <li tal:repeat="error view/widgets/errors">
+                <tal:block condition="error/widget">
+                  <span tal:replace="error/widget/label" />:
+                </tal:block>
+                <span tal:replace="structure error/render">Error Type</span>
+              </li>
 	    </ul>
 	    
 	  </div>
