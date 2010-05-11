@@ -27,19 +27,19 @@
 	       tal:condition="view/status"
 	       metal:define-macro="header">
 	    <div class="summary">
-               <dt> </dt>
-	       <dd i18n:translate=""
-		   tal:content="view/status" />
+              <dl class="info-message flash info">
+               <dt> Info </dt>
+	       <dd i18n:translate="" tal:content="view/status" />
+              </dl>     
 	    </div>
 	    <ul class="errors"
 		tal:condition="view/widgets/errors"
 		metal:define-macro="errors">
-              <li tal:repeat="error view/widgets/errors">
-                <tal:block condition="error/widget">
-                  <span tal:replace="error/widget/label" />:
-                </tal:block>
+              <span tal:repeat="error view/widgets/errors">  
+               <li tal:condition="python: error.widget == None">
                 <span tal:replace="structure error/render">Error Type</span>
-              </li>
+               </li>
+              </span> 
 	    </ul>
 	    
 	  </div>
