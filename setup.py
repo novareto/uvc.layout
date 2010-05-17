@@ -33,6 +33,7 @@ setup(name='uvc.layout',
           'zope.app.testing',
           'zope.testbrowser',
           'uvc.skin',
+          'z3c.macro',
       ],
       entry_points="""
       # -*- Entry points: -*-
