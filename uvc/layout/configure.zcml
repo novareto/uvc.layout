@@ -14,6 +14,11 @@
       layer="uvc.skin.skin.IUVCSkin"
       />
 
+  <z3c:template 
+      template="templates/step.pt" 
+      for="z3c.wizard.interfaces.IStep" 
+      layer="uvc.skin.skin.IUVCSkin"
+      /> 
 
 
   <grok:grok package="." />
