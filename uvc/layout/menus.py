@@ -4,6 +4,7 @@
 import martian
 import grokcore.viewlet as grok
 from dolmen import menu
+from uvc.layout.layout import IUVCLayer
 from zope.component import queryMultiAdapter
 from zope.interface import Interface
 from uvc.layout import interfaces
@@ -20,6 +21,12 @@ class category(martian.Directive):
     validate = martian.validateText
 
 
+class css(martian.Directive):
+    scope = martian.CLASS
+    store = martian.ONCE
+    validate = martian.validateText
+
+
 class GlobalMenu(menu.Menu):
     grok.name("uvc.global.menu")
     grok.implements(interfaces.IGlobalMenu)
@@ -30,7 +37,6 @@ class GlobalMenu(menu.Menu):
 
     def getClass(self, index):
         return self.css[index]
-
 
     def get_categories(self):
         if self.categories is not None:

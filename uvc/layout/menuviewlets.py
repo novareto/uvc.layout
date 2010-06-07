@@ -40,6 +40,14 @@ class DocumentActionsViewlet(grok.Viewlet):
         self.menu = menus.DocumentActionsMenu(
             self.context, self.request, self.view)
         self.menu.update()
+        self.actions = self.get_actions(self.menu.viewlets)
+
+    def get_actions(self, actions):
+        for action in actions:
+            id = action.__name__.replace('.', '-')
+            yield {'css': menus.css.bind(id).get(action),
+                   'title': action.title,
+                   'url': action.url}
 
 
 class HelpViewlet(grok.Viewlet):

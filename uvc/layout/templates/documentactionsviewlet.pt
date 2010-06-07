@@ -3,14 +3,14 @@
 		    class viewlet/menu/menu_class;">
   <dd>
     <ul>
-      <tal:tab repeat="action viewlet/menu/viewlets">
-	<li tal:attributes="class python:action.__name__.replace('.', '-')">
+      <tal:tab repeat="action viewlet/actions">
+	<li tal:attributes="class action/css">
 	  <a href="" tal:attributes="href action/url;
 				     alt action/title;">
 	    <span tal:content="action/title" /> &nbsp; 
 	  </a>
 	</li>
-	</tal:tab>
+      </tal:tab>
     </ul>
   </dd>
 </dl>

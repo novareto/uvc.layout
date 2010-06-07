@@ -1,11 +1,11 @@
 $(document).ready(function(){
     $("dl.dropdown").hover(
         function() {
-           $("dd", this).slideDown('fast');
+           $("dd", this).show();
            $(this).addClass("unfolding");
         }, 
         function() {
-           $("dd", this).slideUp('fast');
+           $("dd", this).hide();
            $(this).removeClass("unfolding");
         } 
     );
