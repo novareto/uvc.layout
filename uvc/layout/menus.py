@@ -104,7 +104,7 @@ class GlobalMenu(menu.Menu):
         if self.categories is not None:
             for name, items in self.categories.items():
                 yield {'title': name,
-                       'menupage': "%s/++menu++%s/%s" % (
+                       'menupage': "%s/index/++menu++%s/%s" % (
                            self.context_url, grok.name.bind().get(self), name),
                        'entries': items}
 

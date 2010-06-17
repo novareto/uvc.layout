@@ -4,7 +4,11 @@
     <dl class="dropdown" 
         tal:define="num repeat/cat/number"
         tal:attributes="class python: 'dropdown ' +viewletmanager.getClass(num)"> 
-      <dt tal:content="cat/title" />
+      <dt>
+	<a href="" 
+	   tal:attributes="href cat/menupage"
+	   tal:content="cat/title" />
+      </dt>
       <dd>
 	<ul>
 	  <li tal:repeat="entry cat/entries">
