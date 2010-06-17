@@ -9,6 +9,7 @@ from zope.component import queryMultiAdapter
 from zope.interface import Interface
 from uvc.layout import interfaces
 from uvc.layout import libraries
+from uvc.layout.directives import bound_resources
 from dolmen.app.layout import Page
 from megrok.pagetemplate import PageTemplate, view
 from zope.interface import Interface
@@ -75,7 +76,14 @@ class MenuCategory(Page):
         self.category = category
 
     def render(self):
-        return str(self.menu.categories.get(self.category))
+        resources = bound_resources.bind().get(self.menu)
+        path = resources.get('uvc.global.menu.image')
+        if not path:
+            return str(self.menu.categories.get(self.category))
+
+        return '<img src="%s" /> %s' % (
+            path,
+            str(self.menu.categories.get(self.category)))
 
 
 class MenuOverview(Page):
@@ -89,6 +97,9 @@ class MenuOverview(Page):
         return str(self.menu.categories)
     
 
+from uvc.layout.directives import bound_resource
+
+@bound_resource('tree.jpg', name="uvc.global.menu.image")
 class GlobalMenu(menu.Menu):
     grok.name("uvc.global.menu")
     grok.implements(interfaces.IGlobalMenu)

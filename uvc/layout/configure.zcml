@@ -4,6 +4,7 @@
            xmlns:grok="http://namespaces.zope.org/grok">
 
   <include package="grok" />
+  <include package="grokcore.component" file="meta.zcml" />
   <include package="megrok.pagetemplate" file="meta.zcml" />
   <includeDependencies package="." />
 
@@ -20,6 +21,6 @@
       layer="uvc.skin.skin.IUVCSkin"
       /> 
 
-
+  <grok:grok package=".meta" />
   <grok:grok package="." />
 </configure>
