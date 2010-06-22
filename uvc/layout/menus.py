@@ -29,7 +29,9 @@ grok.context(Interface)
 class category(martian.Directive):
     scope = martian.CLASS
     store = martian.ONCE
-    validate = martian.validateText
+
+    def factory(self, title, url):
+        return dict(title = title, url = url) 
 
 
 class css(martian.Directive):
@@ -38,68 +40,6 @@ class css(martian.Directive):
     validate = martian.validateText
 
 
-class MenuTraverser(grok.MultiAdapter):
-    grok.adapts(grok.View, IHTTPRequest)
-    grok.provides(ITraversable)
-    grok.name('menu')
-
-    def __init__(self, context, request=None):
-        self.context = context
-        self.request = request
-        self.response = request.response
-
-    def traverse(self, name, ignore=None):
-        menu = getMultiAdapter(
-            (self.context.context, self.request, self.context),
-            IContentProvider, name=name)
-        stack = self.request.getTraversalStack()
-        if stack:
-            category = stack.pop()
-            self.request.setTraversalStack(stack)
-        else:
-            category = None
-            
-        menu.update()
-        if category:
-            return MenuCategory(
-                self.context.context, self.request, menu, category)
-        return MenuOverview(
-            self.context.context, self.request, menu)
-
-
-class MenuCategory(Page):
-    grok.context(Interface)
-
-    def __init__(self, context, request, menu, category):
-        grok.View.__init__(self, context, request)
-        self.menu = menu
-        self.category = category
-
-    def render(self):
-        resources = bound_resources.bind().get(self.menu)
-        path = resources.get('uvc.global.menu.image')
-        if not path:
-            return str(self.menu.categories.get(self.category))
-
-        return '<img src="%s" /> %s' % (
-            path,
-            str(self.menu.categories.get(self.category)))
-
-
-class MenuOverview(Page):
-    grok.context(Interface)
-
-    def __init__(self, context, request, menu):
-        grok.View.__init__(self, context, request)
-        self.menu = menu
-
-    def render(self):
-        return str(self.menu.categories)
-    
-
-from uvc.layout.directives import bound_resource
-
-@bound_resource('tree.jpg', name="uvc.global.menu.image")
 class GlobalMenu(menu.Menu):
     grok.name("uvc.global.menu")
     grok.implements(interfaces.IGlobalMenu)
@@ -111,22 +51,22 @@ class GlobalMenu(menu.Menu):
     def getClass(self, index):
         return self.css[index]
 
+    
+
     def get_categories(self):
+        app_url = self.view.application_url() +'/'
         if self.categories is not None:
-            for name, items in self.categories.items():
-                yield {'title': name,
-                       'menupage': "%s/index/++menu++%s/%s" % (
-                           self.context_url, grok.name.bind().get(self), name),
-                       'entries': items}
+            for name, item in self.categories.items():
+                yield {'title': name, 'url': app_url + item['url'], 'entries': item['items']}
 
     def sort_by_keyword(self):
         categories = {}
         for viewlet in self.viewlets:
-            name = category.bind('Info').get(viewlet)
-            cat = categories.get(name)
+            name = category.bind(dict(title='Info', url='/')).get(viewlet)
+            cat = categories.get(name.get('title'))
             if cat is None:
-                cat = categories[name] = []
-            cat.append(viewlet)
+                cat = categories[name.get('title')] = dict(url=name.get('url'), items=[])
+            cat['items'].append(viewlet)
         return categories
 
     def update(self):
