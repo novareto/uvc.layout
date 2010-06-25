@@ -45,7 +45,7 @@ class DocumentActionsViewlet(grok.Viewlet):
     def get_actions(self, actions):
         for action in actions:
             id = action.__name__.replace('.', '-')
-            yield {'css': menus.css.bind(id).get(action),
+            yield {'icon': menus.icon.bind(id).get(action),
                    'title': action.title,
                    'url': action.url}
 

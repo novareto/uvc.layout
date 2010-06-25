@@ -11,8 +11,7 @@
               tal:content="cat/title">
            </a>
       </dt>     
-
-      <dd>
+      <dd tal:condition="cat/dropdown">
 	<ul>
 	  <li tal:repeat="entry cat/entries">
 	    <tal:entry content="structure entry/render" />
