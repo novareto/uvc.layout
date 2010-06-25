@@ -30,11 +30,11 @@ class category(martian.Directive):
     scope = martian.CLASS
     store = martian.ONCE
 
-    def factory(self, title, url):
-        return dict(title = title, url = url) 
+    def factory(self, title, url, dropdown=True):
+        return dict(title = title, url = url, dropdown=dropdown) 
 
 
-class css(martian.Directive):
+class icon(martian.Directive):
     scope = martian.CLASS
     store = martian.ONCE
     validate = martian.validateText
@@ -51,13 +51,11 @@ class GlobalMenu(menu.Menu):
     def getClass(self, index):
         return self.css[index]
 
-    
-
     def get_categories(self):
         app_url = self.view.application_url() +'/'
         if self.categories is not None:
             for name, item in self.categories.items():
-                yield {'title': name, 'url': app_url + item['url'], 'entries': item['items']}
+                yield {'title': name, 'url': app_url + item['url'], 'entries': item['items'], 'dropdown': item['dropdown']}
 
     def sort_by_keyword(self):
         categories = {}
@@ -65,7 +63,7 @@ class GlobalMenu(menu.Menu):
             name = category.bind(dict(title='Info', url='/')).get(viewlet)
             cat = categories.get(name.get('title'))
             if cat is None:
-                cat = categories[name.get('title')] = dict(url=name.get('url'), items=[])
+                cat = categories[name.get('title')] = dict(url=name.get('url'), dropdown=name.get('dropdown', True), items=[])
             cat['items'].append(viewlet)
         return categories
 
