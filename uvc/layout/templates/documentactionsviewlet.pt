@@ -1,13 +1,18 @@
 <dl tal:condition="viewlet/menu/viewlets"
+    tal:define="images nocall: context/@@image_req;
+                default string:icon_pdf;
+                icon view/icon|default"
     tal:attributes="id viewlet/menu/id;
 		    class viewlet/menu/menu_class;">
   <dd>
     <ul>
       <tal:tab repeat="action viewlet/actions">
-	<li tal:attributes="class action/css">
+        <span tal:content="nocall: action"/>
+	<li tal:define="icon action/icon|default">
 	  <a href="" tal:attributes="href action/url;
 				     alt action/title;">
-	    <span tal:content="action/title" /> &nbsp; 
+	    <span tal:content="action/title" /> &nbsp; <span tal:content="icon"/> 
+            <img src="" tal:attributes="src python: images.get_icon_url(icon) "/>
 	  </a>
 	</li>
       </tal:tab>
