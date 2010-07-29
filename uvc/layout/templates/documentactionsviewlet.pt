@@ -7,7 +7,6 @@
   <dd>
     <ul>
       <tal:tab repeat="action viewlet/actions">
-        <span tal:content="nocall: action"/>
 	<li tal:define="icon view/icon|default">
 	  <a href="" tal:attributes="href action/url;
 				     alt action/title;">

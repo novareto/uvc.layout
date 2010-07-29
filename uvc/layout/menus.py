@@ -59,12 +59,16 @@ class GlobalMenu(menu.Menu):
 
     def sort_by_keyword(self):
         categories = {}
-        for viewlet in self.viewlets:
+        print self.viewlets
+        for i, viewlet in enumerate(self.viewlets):
             name = category.bind(dict(title='Info', url='/')).get(viewlet)
             cat = categories.get(name.get('title'))
             if cat is None:
-                cat = categories[name.get('title')] = dict(url=name.get('url'), dropdown=name.get('dropdown', True), items=[])
+                cat = categories[name.get('title')] = dict(url=name.get('url'), dropdown=name.get('dropdown', True), items=[], order=i)
             cat['items'].append(viewlet)
+        #dd = [{key:categories[key]} for key in sorted(categories, key=lambda s: categories[s]['order'])]
+        #import pdb; pdb.set_trace() 
+        #return [{key:categories[key]} for key in sorted(categories, key=lambda s: categories[s]['order'])][0]
         return categories
 
     def update(self):
