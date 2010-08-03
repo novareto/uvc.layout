@@ -23,7 +23,7 @@ class GlobalMenuViewlet(grok.Viewlet):
 class PreferencesViewlet(grok.Viewlet):
     grok.name('user-preferences')
     grok.viewletmanager(interfaces.IPageTop)
-    grok.order(50)
+    grok.order(11)
 
     def render(self):
         menu = menus.PersonalPreferences(self.context, self.request, self.view)

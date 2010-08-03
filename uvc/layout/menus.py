@@ -90,6 +90,8 @@ class PersonalPreferences(menu.Menu):
 class Dropdowns(PageTemplate):
     view(GlobalMenu)
 
+class PersonalPreferencesTemplate(PageTemplate):
+    view(PersonalPreferences)
 
 class HelpMenu(menu.Menu):
     grok.name("uvc.user.help")
