@@ -1,0 +1,9 @@
+<dl id="uvcsite-footer"
+    class="menu"
+    tal:repeat="group menu/groups" >
+    <dd> 
+    <ul>
+      <li tal:repeat='item group/items' class="entry"> <span tal:replace='structure item/render'/> </li>
+    </ul>
+    </dd>
+</dl>

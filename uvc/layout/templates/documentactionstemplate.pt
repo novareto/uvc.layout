@@ -1,0 +1,7 @@
+<div id="uvc-user-documentactions"
+     tal:repeat="group menu/groups"
+     tal:attributes='class menu/cssClass'>
+    <dl tal:repeat='item group/items'>
+       <span tal:replace='structure item/render'/>
+    </dl>
+</div>

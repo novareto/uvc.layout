@@ -1,0 +1,7 @@
+<dd id="uvc-"
+     tal:repeat="group menu/groups"
+     tal:attributes='class menu/cssClass'>
+    <ul tal:repeat='item group/items' tal:attributes="class python: 'dropdown '">
+       <li> <span tal:replace='structure item/render'/> </li>
+    </ul>
+</dd>

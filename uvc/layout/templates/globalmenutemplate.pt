@@ -1,0 +1,9 @@
+<div id="uvc-global-menu"
+     tal:repeat="group menu/groups"
+     tal:attributes='class menu/cssClass'>
+    <dl tal:repeat='item group/items' tal:attributes="class python: 'dropdown ' + menu.getClass(repeat['item'].number())">
+       <dt>
+       <span tal:replace='structure item/render'/>
+       </dt>
+    </dl>
+</div>
