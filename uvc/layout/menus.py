@@ -59,7 +59,6 @@ class GlobalMenu(menu.Menu):
 
     def sort_by_keyword(self):
         categories = {}
-        print self.viewlets
         for i, viewlet in enumerate(self.viewlets):
             name = category.bind(dict(title='Info', url='/')).get(viewlet)
             cat = categories.get(name.get('title'))
