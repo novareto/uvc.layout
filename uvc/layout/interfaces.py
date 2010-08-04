@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from megrok import navigation
 from zope.interface import Interface
 
 
@@ -28,22 +29,22 @@ class IToolbar(Interface):
     """
 
 
-class IDocumentActions(Interface):
+class IDocumentActions(navigation.interfaces.IMenu):
     """Marker for DocumentActions
     """
 
 
-class IPersonalPreferences(Interface):
+class IPersonalPreferences(navigation.interfaces.IMenu):
     """Marker for PersonalPreferences
     """
 
 
-class IGlobalMenu(Interface):
+class IGlobalMenu(navigation.interfaces.IMenu):
     """Marker for GlobalMenu
     """
 
 
-class IPersonalMenu(Interface):
+class IPersonalMenu(navigation.interfaces.IMenu):
     """Marker for PersonalMenu
     """
 
@@ -53,7 +54,7 @@ class ISidebar(Interface):
     """
 
 
-class IFooter(Interface):
+class IFooter(navigation.interfaces.IMenu):
     """Marker for Footer
     """
 
