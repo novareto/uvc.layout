@@ -1,16 +1,11 @@
 <div id="user-prefs">
-<dl tal:condition="viewletmanager/viewlets"
-    tal:attributes="id viewletmanager/id;
-                    class viewletmanager/menu_class;">
-  <dt tal:content="viewletmanager/title"
-      tal:condition="viewletmanager/title" />
-  <dd>
+<dl id="uvc-user-preferences"
+    class="menu"
+    tal:repeat="group menu/groups" >
+    <dd> 
     <ul>
-      <li tal:attributes="class viewletmanager/entry_class"
-          tal:repeat="action viewletmanager/viewlets">
-        <tal:entry content="structure action/render" />
-      </li>
+      <li class="entry" tal:repeat="item group/items"> <span tal:replace='structure item/render'/> </li>
     </ul>
-  </dd>
+    </dd>
 </dl>
 </div>
