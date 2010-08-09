@@ -34,6 +34,7 @@ setup(name='uvc.layout',
           'zope.testbrowser',
           'uvc.skin',
           'z3c.macro',
+          'megrok.navigation',
       ],
       entry_points="""
       # -*- Entry points: -*-
