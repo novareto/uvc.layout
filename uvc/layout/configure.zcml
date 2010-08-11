@@ -8,19 +8,6 @@
   <include package="megrok.pagetemplate" file="meta.zcml" />
   <includeDependencies package="." />
 
-  <z3c:macro
-      name="widget-rows"
-      macro="widget-rows"
-      template="forms_templates/inputtemplate.pt"
-      layer="uvc.skin.skin.IUVCSkin"
-      />
-
-  <z3c:template 
-      template="templates/step.pt" 
-      for="z3c.wizard.interfaces.IStep" 
-      layer="uvc.skin.skin.IUVCSkin"
-      /> 
-
   <grok:grok package=".meta" />
   <grok:grok package="." />
 </configure>

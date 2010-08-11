@@ -33,7 +33,6 @@ setup(name='uvc.layout',
           'zope.app.testing',
           'zope.testbrowser',
           'uvc.skin',
-          'z3c.macro',
           'megrok.navigation',
       ],
       entry_points="""
