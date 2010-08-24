@@ -44,11 +44,11 @@ class GlobalMenu(navigation.Menu):
         super(GlobalMenu, self).update()
         libraries.dropdown_js.need()
 
-    css = ['blue', 'orange', 'violet', 'green', 'brown', 'purple']
+    css = ['blue', 'violet', 'green', 'brown', 'purple', 'orange']
 
     def getClass(self, index):
         css = self.css*3
-        return css[index]
+        return css[index-1]
 
 class GlobalMenuTemplate(pt.PageTemplate):
     pt.view(GlobalMenu)
