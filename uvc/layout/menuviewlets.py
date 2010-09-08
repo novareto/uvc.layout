@@ -54,6 +54,18 @@ class DocumentActionsViewlet(grok.Viewlet):
         return menu.render()
 
 
+class ExtraViewViewlets(grok.Viewlet):
+    grok.name('extra-viewlets')
+    grok.viewletmanager(interfaces.IAboveContent)
+    grok.order(20)
+
+    def render(self):
+        menu = menus.ExtraViews(
+            self.context, self.request, self.view)
+        menu.update()
+        return menu.render()
+
+
 class ItemTemplate(pt.PageTemplate):
     pt.view(SiteMenuItem)
 

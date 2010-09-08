@@ -58,14 +58,23 @@ class IFooter(navigation.interfaces.IMenu):
     """Marker for Footer
     """
 
+
 class IPanels(Interface):
     """Marker interface for the panels display.
     """
+
 
 class IHelp(Interface):
     """Marker for Help
     """
 
+
 class IExtraInfo(Interface):
     """Marker for ExtraInfo in Forms
+    """
+
+
+class IExtraViews(navigation.interfaces.IMenu):
+    """Marker for additional Views for Folders
+       Objects etc...
     """

@@ -88,3 +88,9 @@ class PersonalPreferencesTemplate(pt.PageTemplate):
     pt.view(PersonalPreferences)
 
 
+### ExtraViews
+class ExtraViews(navigation.Menu):
+    grok.name("uvc.extraviews")
+    grok.implements(interfaces.IExtraViews)
+    cssClass = "extraviews"
+
