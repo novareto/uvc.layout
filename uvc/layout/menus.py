@@ -31,6 +31,7 @@ grok.context(Interface)
 class SubMenu(navigation.Menu):
     grok.baseclass()
 
+
 class SubMenuTemplate(pt.PageTemplate):
     pt.view(SubMenu)
 
@@ -50,6 +51,7 @@ class GlobalMenu(navigation.Menu):
         css = self.css*3
         return css[index-1]
 
+
 class GlobalMenuTemplate(pt.PageTemplate):
     pt.view(GlobalMenu)
 
@@ -58,6 +60,7 @@ class GlobalMenuTemplate(pt.PageTemplate):
 class DocumentActionsMenu(navigation.Menu):
     grok.name("uvc.user.documentactions")
     grok.implements(interfaces.IDocumentActions)
+
 
 class DocumentActionsTemplate(pt.PageTemplate):
     pt.view(DocumentActionsMenu)
@@ -68,6 +71,7 @@ class Footer(navigation.Menu):
     grok.name('uvcsite.footer')
     grok.implements(interfaces.IFooter)
     grok.require('zope.View')
+
 
 class FooterTemplate(pt.PageTemplate):
     pt.view(Footer)
@@ -84,13 +88,16 @@ class PersonalPreferences(navigation.Menu):
     grok.name("uvc.user.preferences")
     grok.implements(interfaces.IPersonalPreferences)
 
+
 class PersonalPreferencesTemplate(pt.PageTemplate):
     pt.view(PersonalPreferences)
 
 
 ### ExtraViews
-class ExtraViews(navigation.Menu):
+class ExtraViews(menu.Menu):
+    grok.title(u'View as')
     grok.name("uvc.extraviews")
+    grok.description(u"Alternative content views")
     grok.implements(interfaces.IExtraViews)
-    cssClass = "extraviews"
 
+    menu_class = "extra-views dropdown"
