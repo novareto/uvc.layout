@@ -94,10 +94,12 @@ class PersonalPreferencesTemplate(pt.PageTemplate):
 
 
 ### ExtraViews
-class ExtraViews(menu.Menu):
+class ExtraViews(navigation.Menu):
     grok.title(u'View as')
     grok.name("uvc.extraviews")
     grok.description(u"Alternative content views")
     grok.implements(interfaces.IExtraViews)
-
     menu_class = "extra-views dropdown"
+
+    id = "extraviews"
+    title = "Ansichten"
