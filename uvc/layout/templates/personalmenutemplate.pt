@@ -1,0 +1,10 @@
+<div id="personal-menu">
+<dl class="menu"
+    tal:repeat="group menu/groups" >
+    <dd> 
+    <ul>
+      <li class="entry" tal:repeat="item group/items"> <span tal:replace='structure item/render'/> </li>
+    </ul>
+    </dd>
+</dl>
+</div>

@@ -83,6 +83,10 @@ class PersonalMenu(navigation.Menu):
     grok.implements(interfaces.IPersonalMenu)
     
 
+class PersonalMenuTemplate(pt.PageTemplate):
+    pt.view(PersonalMenu)
+
+
 ### PersonalPreferences
 class PersonalPreferences(navigation.Menu):
     grok.name("uvc.user.preferences")
