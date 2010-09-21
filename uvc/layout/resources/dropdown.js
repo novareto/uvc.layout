@@ -3,7 +3,7 @@ var closetimer = 0;
 var opendd     = null;
 
 function dd_close() { 
-   opendd.hide();
+   opendd.css('display', 'none');
 }
 
 function dd_timer() {
@@ -22,7 +22,7 @@ $(document).ready(function(){
         function() {
            dd_canceltimer();
 	   if (opendd != null) { dd_close(); }
-           opendd = $("dd", this).show();
+           opendd = $("dd", this).css('display', 'block');
         }, 
         function() {
 	   dd_timer();
