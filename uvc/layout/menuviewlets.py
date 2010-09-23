@@ -9,6 +9,9 @@ import megrok.pagetemplate as pt
 from dolmen.app.layout import MenuViewlet
 from dolmen.app.layout.viewlets import ContextualActions
 from megrok.navigation.components import MenuItem, SiteMenuItem, Menu
+from uvc.layout.layout import IUVCLayer
+from zope.component import getMultiAdapter
+from zope.viewlet.interfaces import IContentProvider
 
 
 grok.templatedir('templates')
@@ -20,7 +23,9 @@ class GlobalMenuViewlet(grok.Viewlet):
     grok.order(10)
 
     def update(self):
-        self.menu = menus.GlobalMenu(self.context, self.request, self.view)
+        #self.menu = menus.GlobalMenu(self.context, self.request, self.view)
+        self.menu = getMultiAdapter((self.context, self.request, self.view), 
+            IContentProvider, 'uvc.global.menu')
         self.menu.update()
 
     def default_namespace(self):

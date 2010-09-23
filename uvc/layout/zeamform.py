@@ -23,7 +23,7 @@ from zeam.form.base.errors import Errors, Error
 from zope.schema.interfaces import IField
 from zeam.form.ztk.validation import InvariantsValidation
 from dolmen.forms import wizard
-from uvcsite.utils.event import AfterSaveEvent
+from uvc.layout.event import AfterSaveEvent
 from zeam.form.base.markers import SUCCESS, FAILURE
 from dolmen.forms.wizard import MF as _
 

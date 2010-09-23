@@ -20,6 +20,7 @@ from zope.publisher.interfaces.http import IHTTPRequest
 from zope.traversing.interfaces import ITraversable, TraversalError
 from zope.contentprovider.interfaces import IContentProvider
 import megrok.pagetemplate as pt
+from uvc.layout.layout import IUVCBaseLayer, IUVCLayer
 
 from megrok import navigation
 
