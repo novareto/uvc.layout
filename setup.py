@@ -34,6 +34,7 @@ setup(name='uvc.layout',
           'zope.testbrowser',
           'uvc.skin',
           'megrok.navigation',
+          'dolmen.forms.wizard',
       ],
       entry_points="""
       # -*- Entry points: -*-
