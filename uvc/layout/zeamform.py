@@ -67,30 +67,17 @@ class Wizard(wizard.Wizard, Form):
         MySaveAction(_(u"Save")),
         wizard.actions.NextAction(_(u"Continue")))    
 
-    def validateData(self, fields, data):
-        # Invariants validation
-        schema_fields = [field for field in fields if hasattr(field, '_field')]
-        invalids = InvariantsValidation(schema_fields).validate(data)
-        if len(invalids):
-            self.errors.append(Errors(
-                *[Error(unicode(invalid)) for invalid in invalids],
-                identifier=self.prefix))
-        if len(self.errors):
-            return self.errors
-        return super(ApplicationForm, self).validateData(fields, data)
-
 
 class Step(wizard.WizardStep, Form):
     grok.baseclass()
 
-    def validateStep(self, data):
+    def validateStep(self, data, errors):
         return False
 
-    def validateData(self, fields, data):
-        super(Step, self).validateData(fields, data)
-        self.validateStep(data)
-        if len(self.errors):
-            return self.errors
+    def validateData(self, fields, data, errors):
+        super(Step, self).validateData(fields, data, errors)
+        self.validateStep(data, errors)
+        return errors
 
 
 class AddForm(Form):
