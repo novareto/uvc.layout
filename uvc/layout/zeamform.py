@@ -127,6 +127,13 @@ class FormTemplate(pt.PageTemplate):
     """
     pt.view(Form)
 
+from dolmen.app.layout import Form as DAForm
+class DAFormTemplate(pt.PageTemplate):
+    """Template for a layout aware form.
+    """
+    template = grok.PageTemplateFile('templates/formtemplate.pt')
+    pt.view(DAForm)
+
 
 class AddFormTemplate(pt.PageTemplate):
     """Template for a layout aware form.

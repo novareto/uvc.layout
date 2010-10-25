@@ -13,7 +13,7 @@
       method="post"
       class="edit-form"
       tal:attributes="action request/URL;
-                      id view/id"
+                      id view/id|view/__name__"
       enctype="multipart/form-data">
 
   <fieldset>

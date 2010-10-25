@@ -7,7 +7,6 @@
   <include package="dolmen.app.layout" />
   <include package="grokcore.component" file="meta.zcml" />
   <include package="megrok.pagetemplate" file="meta.zcml" />
-  <includeDependencies package="." />
 
   <grok:grok package=".meta" />
   <grok:grok package="." />
