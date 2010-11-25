@@ -1,7 +1,5 @@
 <div class="input-form" i18n:domain="dolmen.forms.wizard">
 
-   <div tal:replace="structure provider:uvc.hilfen" />
-
    <fieldset class="wizard-steps">
      <legend>Steps</legend>
      <ul>

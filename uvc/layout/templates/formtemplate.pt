@@ -1,5 +1,4 @@
 <div class="input-form" i18n:domain="zeam.form.base">
- <div tal:replace="structure provider:uvc.hilfen" />
  <div id="formHeader">
   <h1 tal:condition="view/label"
       tal:content="view/label">Label</h1>

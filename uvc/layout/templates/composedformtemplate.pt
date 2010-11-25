@@ -3,8 +3,6 @@
   </head>
   <body>
 
-      <div tal:replace="structure provider:uvc.hilfen" />
-
       <h1 tal:condition="view/label"
           tal:content="view/label">Label</h1>
 
