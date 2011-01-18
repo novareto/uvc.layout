@@ -63,9 +63,9 @@ class Wizard(wizard.Wizard, Form):
     grok.baseclass()
 
     actions = base.Actions(
-        wizard.actions.PreviousAction(_(u"Back")),
-        MySaveAction(_(u"Save")),
-        wizard.actions.NextAction(_(u"Continue")))    
+        wizard.actions.PreviousAction(_(u"Zurück")),
+        MySaveAction(_(u"Speichern")),
+        wizard.actions.NextAction(_(u"Weiter")))    
 
 
 class Step(wizard.WizardStep, Form):
