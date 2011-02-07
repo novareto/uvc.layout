@@ -54,4 +54,4 @@ Now we are able to access the Index View via the Site and a TestRequest
 
    >>> view = getMultiAdapter((uvcsite, TestRequest()), name="index")
    >>> view
-   <Index object at ...>
+   <uvc.layout.Index object at ...>
