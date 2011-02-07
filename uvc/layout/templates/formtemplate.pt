@@ -1,4 +1,6 @@
-<div class="input-form" i18n:domain="zeam.form.base">
+<div class="input-form" 
+     metal:define-macro="form" 
+     i18n:domain="zeam.form.base">
  <div id="formHeader">
   <h1 tal:condition="view/label"
       tal:content="view/label">Label</h1>

@@ -7,7 +7,7 @@ import z3c.flashmessage.interfaces
 import megrok.pagetemplate as pt
 
 from grok import util
-from zope import component
+from zope import component, interface
 
 from zeam.form import base
 from zeam.form import layout
@@ -33,6 +33,7 @@ grok.templatedir('templates')
 class Form(ApplicationForm):
     """ Base Class form ZEAM-FORM"""
     grok.baseclass()
+    #grok.context(interface.Interface)
 
     @property
     def id(self):
