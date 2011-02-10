@@ -1,5 +1,5 @@
 <div class="input-form" 
-     metal:define-macro="form" 
+     metal:define-macro="editform" 
      i18n:domain="zeam.form.base">
  <div id="formHeader">
   <h1 tal:condition="view/label"

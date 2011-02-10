@@ -5,8 +5,15 @@
 
   <include package="grok" />
   <include package="dolmen.app.layout" />
+  <include package="z3c.macro" />
+  <include package="z3c.macro" file="meta.zcml" />
   <include package="grokcore.component" file="meta.zcml" />
   <include package="megrok.pagetemplate" file="meta.zcml" />
+
+  <z3c:macro
+      name="editform"
+      template="templates/formtemplate.pt"
+      />
 
   <grok:grok package=".meta" />
   <grok:grok package="." />

@@ -35,6 +35,7 @@ setup(name='uvc.layout',
           'uvc.skin',
           'megrok.navigation',
           'dolmen.forms.wizard',
+          'z3c.macro',
       ],
       entry_points="""
       # -*- Entry points: -*-
