@@ -18,6 +18,7 @@ class IAfterSaveEvent(zope.component.interfaces.IObjectEvent):
 class AfterSaveEvent(zope.component.interfaces.ObjectEvent):
     grok.implements(IAfterSaveEvent)
 
-    def __init__(self, object, principal):
+    def __init__(self, object, request):
         self.object = object
-        self.principal = principal
+        self.request = request
+        self.principal = request.principal

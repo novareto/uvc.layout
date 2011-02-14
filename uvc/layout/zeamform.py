@@ -55,7 +55,7 @@ class MySaveAction(wizard.actions.SaveAction):
     def __call__(self, form):
         if form.current.actions['save'](form.current) is SUCCESS:
             if super(MySaveAction, self).__call__(form) is SUCCESS:
-                grok.notify(AfterSaveEvent(form.context, form.request.principal))
+                grok.notify(AfterSaveEvent(form.context, form.request))
                 form.redirect(form.url(self.redirect_url))
             return SUCCESS
         return FAILURE
@@ -96,7 +96,7 @@ class AddForm(Form):
         if obj is not None:
             # mark only as finished if we get the new object
             self._finishedAdd = True
-            grok.notify(AfterSaveEvent(obj, self.request.principal))
+            grok.notify(AfterSaveEvent(obj, self.request))
 
     def createAndAdd(self, data):
         obj = self.create(data)
