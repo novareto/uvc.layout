@@ -53,9 +53,10 @@ class GroupForm(ComposedForm, Form):
 
 class MySaveAction(wizard.actions.SaveAction):
     def __call__(self, form):
-        if super(MySaveAction, self).__call__(form) is SUCCESS:
-            grok.notify(AfterSaveEvent(form.context, form.request.principal))
-            form.redirect(form.url(self.redirect_url))
+        if form.current.actions['save'](form.current) is SUCCESS:
+            if super(MySaveAction, self).__call__(form) is SUCCESS:
+                grok.notify(AfterSaveEvent(form.context, form.request.principal))
+                form.redirect(form.url(self.redirect_url))
             return SUCCESS
         return FAILURE
 
