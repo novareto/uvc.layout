@@ -11,7 +11,7 @@
 
       <p class="form-error"
          tal:condition="view/errors">
-        There were errors:
+         Es sind Fehler aufgetreten:
         <tal:error tal:define="formError view/formError"
                    tal:condition="formError">
           <br />
