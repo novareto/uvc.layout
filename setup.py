@@ -36,8 +36,11 @@ setup(name='uvc.layout',
           'megrok.navigation',
           'dolmen.forms.wizard',
           'z3c.macro',
+          'js.jquery',
       ],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
+      entry_points={
+          'fanstatic.libraries': [
+              'uvc.layout = uvc.layout.libraries:library',
+          ]
+      }
       )

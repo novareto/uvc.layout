@@ -1,19 +1,17 @@
-import grok
-
-from megrok import resource
-from hurry.jquery import jquery
-
-
-class UVCLayoutResources(resource.Library):
-    resource.name('uvc.layout.resources')
-    grok.path('resources')
+# -*- coding: utf-8 -*-
+# Copyright (c) 2007-2010 NovaReto GmbH
+# cklinger@novareto.de 
 
 
-common = resource.ResourceInclusion(
-    UVCLayoutResources, 'common.js', depends=[jquery])
+from fanstatic import Library, Resource
+from js.jquery import jquery
 
-dropdown_js = resource.ResourceInclusion(
-    UVCLayoutResources, 'dropdown.js', depends=[jquery])
 
-dropdown = resource.ResourceInclusion(
-    UVCLayoutResources, 'dropdown.css', depends=[jquery, dropdown_js])
+library = Library('uvc.layout.resources', 'resources')
+
+
+common = Resource(library, 'common.js', depends=[jquery])
+
+dropdown_js = Resource(library, 'dropdown.js', depends=[jquery])
+
+dropdown = Resource(library, 'dropdown.css', depends=[jquery, dropdown_js])

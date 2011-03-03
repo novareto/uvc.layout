@@ -44,7 +44,8 @@ class PreferencesViewlet(grok.Viewlet):
     grok.order(20)
 
     def render(self):
-        menu = menus.PersonalPreferences(self.context, self.request, self.view)
+        menu = getMultiAdapter((self.context, self.request, self.view), 
+            IContentProvider, 'uvc.user.preferences')
         menu.update()
         return menu.render()
 
@@ -55,8 +56,8 @@ class DocumentActionsViewlet(grok.Viewlet):
     grok.order(10)
 
     def render(self):
-        menu = menus.DocumentActionsMenu(
-            self.context, self.request, self.view)
+        menu = getMultiAdapter((self.context, self.request, self.view), 
+            IContentProvider, 'uvc.user.documentactions')
         menu.update()
         return menu.render()
 
