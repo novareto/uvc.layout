@@ -4,6 +4,7 @@
            xmlns:grok="http://namespaces.zope.org/grok">
 
   <include package="grok" />
+  <include package="megrok.resource" />
   <include package="dolmen.app.layout" />
   <include package="z3c.macro" />
   <include package="z3c.macro" file="meta.zcml" />
