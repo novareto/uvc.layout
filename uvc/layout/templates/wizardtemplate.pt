@@ -1,5 +1,5 @@
 <div class="input-form">
-
+<!--
    <fieldset class="wizard-steps">
      <legend>Steps</legend>
      <ul>
@@ -21,7 +21,7 @@
        </li>
      </ul>
    </fieldset>     
-
+-->
   <h1 tal:condition="view/label"
       tal:content="view/label">Label</h1>
 
