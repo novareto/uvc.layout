@@ -51,6 +51,38 @@ class GroupForm(ComposedForm, Form):
     grok.baseclass()
 
 
+
+class MyNextAction(wizard.actions.NextAction):
+    """Action to move to the next step.
+    """
+
+
+    def __call__(self, form):
+        if form.current.actions['save'](form.current) is SUCCESS:
+            step = form.getCurrentStepId()
+            z = 1
+            if hasattr(form.current, 'next_navigation'):
+                data, errors = form.current.extractData()
+                z=form.current.next_navigation(data)
+            form.setCurrentStep(step + z)
+            return SUCCESS
+        return FAILURE
+
+
+class MyPreviousAction(wizard.actions.PreviousAction):
+    """Action to move to the previous step.
+    """
+
+    def __call__(self, form):
+        step = form.getCurrentStepId()
+        z = 1
+        if hasattr(form.current, 'prev_navigation'):
+            z = form.current.prev_navigation()
+        form.setCurrentStep(step - z)
+        return SUCCESS
+
+
+
 class MySaveAction(wizard.actions.SaveAction):
     def __call__(self, form):
         if form.current.actions['save'](form.current) is SUCCESS:
@@ -65,9 +97,9 @@ class Wizard(wizard.Wizard, Form):
     grok.baseclass()
 
     actions = base.Actions(
-        wizard.actions.PreviousAction(_(u"Zurück")),
+        MyPreviousAction(_(u"Zurück"), identifier="back"),
         MySaveAction(_(u"Speichern")),
-        wizard.actions.NextAction(_(u"Weiter")))    
+        MyNextAction(_(u"Weiter")))    
 
 
 class Step(wizard.WizardStep, Form):
