@@ -6,7 +6,7 @@ from dolmen.app.layout.viewlets import FlashMessages
 
 
 class Messages(FlashMessages):
-    grok.baseclass()
+    #grok.baseclass()
 
     def display_messages(self):
         for message in self.messages:
