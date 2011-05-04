@@ -67,7 +67,7 @@
                     tal:content="widget/title">
                     Label </span>
                <span class="field-required"
-                     tal:condition="widget/required"></span>
+                     tal:condition="widget/required">&nbsp;</span>
               <tal:description tal:condition="widget/description">
                 <span class="small"
                       tal:content="widget/description">
