@@ -52,7 +52,7 @@
                  tal:condition="widget/required">&nbsp;</span>
           <tal:description tal:condition="widget/description">
             <span class="small"
-                  tal:content="widget/description">
+                  tal:content="structure widget/description">
             </span>
           </tal:description>
         </label>
