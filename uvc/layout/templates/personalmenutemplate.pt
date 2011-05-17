@@ -1,9 +1,11 @@
 <div id="personal-menu">
 <dl class="menu"
     tal:repeat="group menu/groups" >
-    <dd> 
+    <dd>
     <ul>
-      <li class="entry" tal:repeat="item group/items"> <span tal:replace='structure item/render'/> </li>
+      <li class="entry" tal:repeat="item group/items">
+        <a href="" tal:attributes="href python: view.url(context, item.title)"> <span tal:content="item/title"/> </a>
+      </li>
     </ul>
     </dd>
 </dl>
