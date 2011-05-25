@@ -1,7 +1,7 @@
 <tal:messages condition="viewlet/messages">
   <dl class="" tal:repeat="message viewlet/display_messages"
       tal:attributes="class string:info-message flash ${message/css}">
-    <dt tal:content="message/type" />
+    <dt> &nbsp; </dt>
     <dd tal:content="message/message" />
   </dl>
 </tal:messages>
