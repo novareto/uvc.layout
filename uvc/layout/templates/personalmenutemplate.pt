@@ -4,7 +4,7 @@
     <dd>
     <ul>
       <li class="entry" tal:repeat="item group/items">
-        <a href="" tal:attributes="href python: view.url(context, item.title)"> <span tal:content="item/title"/> </a>
+        <a href="" tal:attributes="href python: view.url(context, item.viewName)"> <span tal:content="item/title"/> </a>
       </li>
     </ul>
     </dd>
