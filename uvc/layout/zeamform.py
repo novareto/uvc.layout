@@ -33,6 +33,7 @@ grok.templatedir('templates')
 class Form(ApplicationForm):
     """ Base Class form ZEAM-FORM"""
     grok.baseclass()
+    grok.require('uvc.AddContent')
     #grok.context(interface.Interface)
 
     @property
