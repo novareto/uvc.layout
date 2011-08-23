@@ -78,3 +78,6 @@ class IExtraViews(navigation.interfaces.IMenu):
     """Marker for additional Views for Folders
        Objects etc...
     """
+
+class IBeforeActions(Interface):
+    """ Marker Interfae"""

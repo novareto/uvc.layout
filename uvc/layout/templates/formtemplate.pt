@@ -67,6 +67,7 @@
       </div>
     </div>
 
+    <div id="before-actions" tal:replace="structure provider:uvcsite.beforeactions"/>
       <div class="actions"
            tal:condition="view/actionWidgets">
         <span class="action" tal:repeat="widget view/actionWidgets">

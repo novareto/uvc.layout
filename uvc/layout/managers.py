@@ -43,3 +43,10 @@ class Panels(grok.ViewletManager):
     grok.context(Interface)
     grok.implements(IPanels)
     grok.require('zope.View')
+
+
+class BeforeActions(grok.ViewletManager):
+    grok.name('uvcsite.beforeactions')
+    grok.context(Interface)
+    grok.implements(IBeforeActions)
+    grok.require('zope.View')
