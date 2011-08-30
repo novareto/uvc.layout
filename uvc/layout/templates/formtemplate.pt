@@ -62,7 +62,7 @@
         <div class="error"
              tal:define="error widget/error"
              tal:condition="error">
-          <span tal:content="error/title"> Error </span>
+          <span tal:content="structure error/title"> Error </span>
         </div>
       </div>
     </div>
