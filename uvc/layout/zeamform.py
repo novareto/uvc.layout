@@ -57,7 +57,6 @@ class MyNextAction(wizard.actions.NextAction):
     """Action to move to the next step.
     """
 
-
     def __call__(self, form):
         if form.current.actions['save'](form.current) is SUCCESS:
             step = form.getCurrentStepId()
@@ -94,6 +93,20 @@ class MySaveAction(wizard.actions.SaveAction):
         return FAILURE
 
 
+from zeam.form.base.markers import NO_CHANGE
+class MyHiddenSaveAction(wizard.actions.HiddenSaveAction):
+
+    def applyData(self, form, content, data):
+        print form.request
+        for field in form.fields:
+            value = data.getWithDefault(field.identifier)
+            print field, value
+            if value is not NO_CHANGE:
+                content.set(field.identifier, value)
+            print value
+            #elif value is _marker:
+            #    content.set(field.identifier, None)
+
 class Wizard(wizard.Wizard, Form):
     grok.baseclass()
 
@@ -105,6 +118,9 @@ class Wizard(wizard.Wizard, Form):
 
 class Step(wizard.WizardStep, Form):
     grok.baseclass()
+
+    actions = base.Actions(
+        MyHiddenSaveAction(u'HiddenEdit', identifier="save"))
 
     def validateStep(self, data, errors):
         return False
