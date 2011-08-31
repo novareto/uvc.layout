@@ -26,6 +26,7 @@ from dolmen.forms import wizard
 from uvc.layout.event import AfterSaveEvent
 from zeam.form.base.markers import SUCCESS, FAILURE
 from dolmen.forms.wizard import MF as _
+from zeam.form.base.markers import NO_CHANGE
 
 
 grok.templatedir('templates')
@@ -56,7 +57,6 @@ class GroupForm(ComposedForm, Form):
 class MyNextAction(wizard.actions.NextAction):
     """Action to move to the next step.
     """
-
     def __call__(self, form):
         if form.current.actions['save'](form.current) is SUCCESS:
             step = form.getCurrentStepId()
@@ -93,17 +93,13 @@ class MySaveAction(wizard.actions.SaveAction):
         return FAILURE
 
 
-from zeam.form.base.markers import NO_CHANGE
 class MyHiddenSaveAction(wizard.actions.HiddenSaveAction):
 
     def applyData(self, form, content, data):
-        print form.request
         for field in form.fields:
             value = data.getWithDefault(field.identifier)
-            print field, value
             if value is not NO_CHANGE:
                 content.set(field.identifier, value)
-            print value
             #elif value is _marker:
             #    content.set(field.identifier, None)
 
