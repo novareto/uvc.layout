@@ -23,7 +23,6 @@ class GlobalMenuViewlet(grok.Viewlet):
     grok.order(10)
 
     def update(self):
-        #self.menu = menus.GlobalMenu(self.context, self.request, self.view)
         self.menu = getMultiAdapter((self.context, self.request, self.view), 
             IContentProvider, 'uvc.global.menu')
         self.menu.update()

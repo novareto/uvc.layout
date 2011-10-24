@@ -26,5 +26,5 @@ class Layout(master.Master):
     grok.name('uvc.layout')
 
     def update(self):
-        #common.need()
+        common.need()
         master.Master.update(self)
