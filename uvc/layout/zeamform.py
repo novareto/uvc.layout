@@ -131,7 +131,7 @@ class AddForm(Form):
     grok.baseclass()
     _finishedAdd = False 
 
-    @base.action(u'Hinzufügen')
+    @base.action(u'Hinzufügen', identifier="uvcsite.add")
     def handleAdd(self):
         data, errors = self.extractData()
         if errors:
