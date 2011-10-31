@@ -8,7 +8,7 @@
  </div>
 
 
-<form action="." tal:attributes="action request/URL" method="post"
+<form action="." novalidate="novalidate" tal:attributes="action request/URL" method="post"
       enctype="multipart/form-data">
 
   <fieldset>

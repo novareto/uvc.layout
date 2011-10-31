@@ -13,6 +13,7 @@
 <form action="." 
       method="post"
       class="edit-form zeam-form"
+      novalidate="novalidate"
       tal:attributes="action request/URL;
                       id view/id|view/__name__"
       enctype="multipart/form-data">

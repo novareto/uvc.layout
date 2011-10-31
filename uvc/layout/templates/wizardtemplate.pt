@@ -31,7 +31,7 @@
 
 
 <form action="." tal:attributes="action request/URL" method="post"
-      enctype="multipart/form-data">
+      enctype="multipart/form-data" novalidate="novalidate">
 
 
   <fieldset>
