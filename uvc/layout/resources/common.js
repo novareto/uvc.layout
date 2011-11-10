@@ -53,7 +53,7 @@ $(document).ready(function() {
     $('body').append("<div id='loader'>&nbsp;</div>");
     
     $('body').ajaxStart(function() {
-        loader = $("#loader");
+        var loader = $("#loader");
         loader.addClass('loading');
         loader.center();
         loader.show();

@@ -7,10 +7,10 @@
      tal:content="view/description">Description</p>
  </div>
 
-
+<!--
 <form action="." novalidate="novalidate" tal:attributes="action request/URL" method="post"
       enctype="multipart/form-data">
-
+      -->
   <fieldset>
 
     <p class="form-status"
@@ -56,15 +56,17 @@
         </div>
       </div>
     </div>
-
+<!--
       <div class="actions"
            tal:condition="view/actionWidgets">
         <span class="action" tal:repeat="widget view/actionWidgets">
           <tal:widget tal:content="structure widget/render" />
         </span>
       </div>
-
+      -->
 
   </fieldset>
+  <!--
 </form>
+-->
 </div>
