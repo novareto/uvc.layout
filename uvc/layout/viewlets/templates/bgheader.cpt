@@ -1,0 +1,4 @@
+<div class="header">
+  <a id="logo" class="logotype" href="" tal:attributes="href view.application_url()"> </a>
+  <span id="top-bg"> </span>
+</div>

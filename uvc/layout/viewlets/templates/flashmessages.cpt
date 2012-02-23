@@ -1,0 +1,5 @@
+<tal:messages tal:repeat="message viewlet.messages" condition="viewlet.messages">
+  <div id="info-message" class="" tal:attributes="class message.type or 'info'">
+    <span tal:content="message.message" />
+  </div>
+</tal:messages>
