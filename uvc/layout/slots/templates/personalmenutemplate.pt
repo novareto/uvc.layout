@@ -1,4 +1,4 @@
-<ul class="nav nav-pills nav-stacked">
+<ul class="block nav nav-pills nav-stacked">
   <li tal:repeat="viewlet viewletmanager/getMenuItems">
   <a href="" tal:attributes="href viewlet/action;"> 
     <span tal:content="viewlet/title"> </span> 
