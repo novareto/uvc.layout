@@ -61,6 +61,11 @@ class MenuItem(grok.Viewlet):
             return True
         if request_url.endswith('/@@'+normalized_action):
             return True
+        if request_url == self.action:
+            return True
+        if request_url.endswith('/@@index'):
+            if request_url[:-8] == self.action:
+                return True
         return False
 
     def render(self):

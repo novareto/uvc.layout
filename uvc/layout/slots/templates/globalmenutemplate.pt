@@ -8,7 +8,7 @@
 	</li>
   </ul>
     </li>
-    <li tal:condition="not: menu/submenu">
+    <li tal:condition="not: menu/submenu" tal:attributes="class python: menu['selected'] and 'active' or ''">
       <a href="" tal:attributes="href menu/action" tal:content="menu/title"> </a>
     </li>
   </tal:loop>
