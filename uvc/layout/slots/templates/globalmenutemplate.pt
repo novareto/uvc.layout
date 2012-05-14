@@ -12,4 +12,7 @@
       <a href="" tal:attributes="href menu/action" tal:content="menu/title"> </a>
     </li>
   </tal:loop>
+  <tal:loop repeat="menu viewlet/renderableitems">
+    <span tal:replace="structure menu/render"> </span>
+  </tal:loop>
 </ul>

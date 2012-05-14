@@ -5,38 +5,43 @@
 import grok
 
 from zope.interface import Interface
-from uvc.layout.slots.interfaces import ISubMenu
+from uvc.layout.slots.interfaces import ISubMenu, IRenderable
 
 
 class Menu(grok.ViewletManager):
     grok.baseclass()
     grok.context(Interface)
 
+    def getRenderableItems(self):
+        self.update()
+        return [v for v in self.viewlets if IRenderable.providedBy(v)]
+
     def getMenuItems(self):
         rc = []
         self.update()
         for viewlet in self.viewlets:
-            submenuitems = []
-            if ISubMenu.providedBy(viewlet):
-                submenu = viewlet
-                submenu.update()
-                for submenuitem in submenu.viewlets:
-                    submenuitems.append(dict(
-                        title = submenuitem.title or grok.title.bind().get(submenuitem),
-                        id = submenuitem.__class__.__name__.lower(),
-                        description = grok.description.bind().get(submenuitem),
-                        selected = submenuitem.selected,
-                        icon = submenuitem.icon,
-                        action = submenuitem.action))
-            submenuitems.reverse()
-            rc.append(dict(
-                title = viewlet.title or grok.title.bind().get(viewlet),
-                id = viewlet.__class__.__name__.lower(),
-                description = grok.description.bind().get(viewlet),
-                selected = viewlet.selected,
-                icon = viewlet.icon,
-                submenu = submenuitems,
-                action = viewlet.action))
+            if not IRenderable.providedBy(viewlet):
+                submenuitems = []
+                if ISubMenu.providedBy(viewlet):
+                    submenu = viewlet
+                    submenu.update()
+                    for submenuitem in submenu.viewlets:
+                        submenuitems.append(dict(
+                            title = submenuitem.title or grok.title.bind().get(submenuitem),
+                            id = submenuitem.__class__.__name__.lower(),
+                            description = grok.description.bind().get(submenuitem),
+                            selected = submenuitem.selected,
+                            icon = submenuitem.icon,
+                            action = submenuitem.action))
+                submenuitems.reverse()
+                rc.append(dict(
+                    title = viewlet.title or grok.title.bind().get(viewlet),
+                    id = viewlet.__class__.__name__.lower(),
+                    description = grok.description.bind().get(viewlet),
+                    selected = viewlet.selected,
+                    icon = viewlet.icon,
+                    submenu = submenuitems,
+                    action = viewlet.action))
         rc.reverse()
         return rc
 

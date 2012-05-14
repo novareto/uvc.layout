@@ -25,8 +25,11 @@ class GlobalMenuViewlet(grok.Viewlet):
     id = "globalmenuviewlet"
 
     def update(self):
-        self.menus = getMultiAdapter(
-                (self.view.context, self.request, self.view), IContentProvider, 'globalmenu').getMenuItems()
+        globalmenu = getMultiAdapter(
+                (self.view.context, self.request, self.view),
+                IContentProvider, 'globalmenu')
+        self.menus = globalmenu.getMenuItems()
+        self.renderableitems = globalmenu.getRenderableItems()
 
     def render(self):
         template = getMultiAdapter((self, self.request), IPageTemplate)

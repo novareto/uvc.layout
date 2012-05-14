@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '2.0a3dev'
+version = '2.0a3'
 
 setup(name='uvc.layout',
       version=version,
@@ -28,7 +28,6 @@ setup(name='uvc.layout',
           'megrok.menu',
           'megrok.resourceviewlet',
           'setuptools',
-          'z3c.macro',
           'z3c.testsetup',
           'zope.app.wsgi',
       ],
