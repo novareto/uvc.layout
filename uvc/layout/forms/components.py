@@ -15,6 +15,7 @@ from zeam.form.composed import ComposedForm
 from dolmen.forms import wizard
 from zeam.form.base.markers import SUCCESS, FAILURE
 from dolmen.forms.wizard import MF as _
+from zeam.form.base.markers import NO_CHANGE
 
 
 class Form(ApplicationForm):
@@ -31,7 +32,7 @@ class AddForm(Form):
     grok.baseclass()
     _finishedAdd = False 
 
-    @base.action(u'Hinzufügen', identifier="uvcsite.add")
+    @base.action(u'Speichern', identifier="uvcsite.add")
     def handleAdd(self):
         data, errors = self.extractData()
         if errors:
@@ -124,8 +125,22 @@ class Wizard(wizard.Wizard, Form):
         MyNextAction(_(u"Weiter")))    
 
 
+class MyHiddenSaveAction(wizard.actions.HiddenSaveAction):
+
+    def applyData(self, form, content, data):
+        for field in form.fields:
+            value = data.getWithDefault(field.identifier)
+            if value is not NO_CHANGE:
+                content.set(field.identifier, value)
+        return SUCCESS
+
+
 class Step(wizard.WizardStep, Form):
     grok.baseclass()
+
+    actions = base.Actions(
+        MyHiddenSaveAction(u'HiddenEdit', identifier="save"))
+
 
     def validateStep(self, data, errors):
         return False
