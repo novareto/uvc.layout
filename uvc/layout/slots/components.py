@@ -58,6 +58,8 @@ class MenuItem(grok.Viewlet):
     def selected(self):
         request_url = self.request.getURL()
         normalized_action = self.action
+        if not self.action:
+            return False
         if self.action.startswith('@@'):
             normalized_action = self.action[2:]
         if request_url.endswith('/'+normalized_action):
