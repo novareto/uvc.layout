@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '2.0a6.dev0'
+version = '2.1.0'
 
 setup(name='uvc.layout',
       version=version,
