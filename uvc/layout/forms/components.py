@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2007-2011 NovaReto GmbH
-# cklinger@novareto.de 
+# cklinger@novareto.de
 
 import grok
 import zope.lifecycleevent
@@ -30,7 +30,7 @@ class Form(ApplicationForm):
 
 class AddForm(Form):
     grok.baseclass()
-    _finishedAdd = False 
+    _finishedAdd = False
 
     @base.action(u'Speichern', identifier="uvcsite.add")
     def handleAdd(self):
@@ -122,7 +122,7 @@ class Wizard(wizard.Wizard, Form):
     actions = base.Actions(
         MyPreviousAction(_(u"Zurück"), identifier="back"),
         MySaveAction(_(u"Speichern")),
-        MyNextAction(_(u"Weiter")))    
+        MyNextAction(_(u"Weiter")))
 
 
 class MyHiddenSaveAction(wizard.actions.HiddenSaveAction):
@@ -140,7 +140,6 @@ class Step(wizard.WizardStep, Form):
 
     actions = base.Actions(
         MyHiddenSaveAction(u'HiddenEdit', identifier="save"))
-
 
     def validateStep(self, data, errors):
         return False
