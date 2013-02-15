@@ -144,7 +144,7 @@ class Step(wizard.WizardStep, Form):
     def validateStep(self, data, errors):
         return False
 
-    def validateData(self, fields, data, errors):
-        super(Step, self).validateData(fields, data, errors)
+    def validateData(self, fields, data):
+        errors = super(Step, self).validateData(fields, data)
         self.validateStep(data, errors)
         return errors
