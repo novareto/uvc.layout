@@ -1,4 +1,4 @@
-<ul tal:attributes="id viewlet.id" class="nav pull-right">
+<ul tal:attributes="id viewlet.id" class="nav navbar-nav pull-right">
   <li class="dropdown">
   <a class="dropdown-toggle" href="#" data-toggle="dropdown">
     <i class="icon-cog"></i> <span tal:content="viewlet.username"> </span> <b class="caret"></b>
