@@ -7,17 +7,22 @@
   </head>
   <body>
     <div class="container">
-      <div id="uvc-header" class="span-24 last" tal:content="structure provider:uvc-pagetop"> </div>
+      <div id="uvc-header" class="span-24 last"
+	   tal:content="structure provider:uvc-pagetop"> </div>
       <div class="clear"> </div>
 
       <div id="uvc-body" class="span-24 last">
-        <div id="uvc-above-body" tal:content="structure provider:uvc-above-body"> </div>
-        <div id="uvc-inner-body" tal:content="structure view/content"> </div>
-        <div id="uvc-below-body" tal:content="structure provider:uvc-below-body"> </div>
+        <div id="uvc-above-body"
+	     tal:content="structure provider:uvc-above-body"> </div>
+        <div id="uvc-inner-body"
+	     tal:content="structure view/content"> </div>
+        <div id="uvc-below-body"
+	     tal:content="structure provider:uvc-below-body"> </div>
       </div>
 
       <div class="clear"> </div>
-      <div id="uvc-footer" class="span24 last" tal:content="structure provider:uvc-footer"> </div>
+      <div id="uvc-footer" class="span24 last"
+	   tal:content="structure provider:uvc-footer"> </div>
     </div>
   </body>
 </html>
