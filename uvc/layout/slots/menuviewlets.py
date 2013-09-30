@@ -49,7 +49,8 @@ class PersonalPreferencesViewlet(grok.Viewlet):
 
     def update(self):
         self.menus = getMultiAdapter(
-                (self.view.context, self.request, self.view), IContentProvider, 'personalpreferences').getMenuItems()
+                (self.view.context, self.request, self.view),
+                IContentProvider, 'personalpreferences').getMenuItems()
 
     @property
     def username(self):
@@ -73,7 +74,8 @@ class DocumentActionsMenuViewlet(grok.Viewlet):
 
     def update(self):
         self.menus = getMultiAdapter(
-                (self.view.context, self.request, self.view), IContentProvider, 'documentactions').getMenuItems()
+                (self.view.context, self.request, self.view),
+                IContentProvider, 'documentactions').getMenuItems()
 
     def render(self):
         template = getMultiAdapter((self, self.request), IPageTemplate)

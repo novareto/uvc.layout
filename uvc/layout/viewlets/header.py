@@ -15,3 +15,4 @@ class BGHeader(grok.Viewlet):
     grok.viewletmanager(IPageTop)
     grok.context(Interface)
     grok.order(10)
+    grok.baseclass()
