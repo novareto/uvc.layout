@@ -1,0 +1,8 @@
+dolmen.app.breadcrumbs
+grok
+js.jquery
+megrok.menu
+megrok.resourceviewlet
+setuptools
+z3c.testsetup
+zope.app.wsgi
