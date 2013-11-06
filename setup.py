@@ -24,6 +24,7 @@ setup(name='uvc.layout',
       install_requires=[
           'dolmen.app.breadcrumbs',
           'grok',
+          'grokcore.layout',
           'js.jquery',
           'megrok.menu',
           'megrok.resourceviewlet',

@@ -4,7 +4,7 @@
 
 import grok
 
-from megrok import layout
+from grokcore import layout
 from zope import interface
 
 from zope.container.interfaces import IContainer
@@ -29,9 +29,11 @@ class IUVCSkin(IUVCBaseLayer):
 class Layout(layout.Layout):
     grok.context(interface.Interface)
     grok.layer(IUVCBaseLayer)
-    grok.name('uvc.layout')
+    grok.name('')
 
     def update(self):
+        layout.Layout.update(self)
         self.base = absoluteURL(self.context, self.request)
         if IContainer.providedBy(self.context) and self.base[:-1] != '/':
             self.base = self.base + '/'
+        self.view.update()

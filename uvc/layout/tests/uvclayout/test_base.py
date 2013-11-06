@@ -12,7 +12,7 @@
   >>> request = TestRequest()
   >>> directlyProvides(request, IUVCBaseLayer)
 
-  >>> from megrok.layout.interfaces import ILayout
+  >>> from grokcore.layout.interfaces import ILayout
   >>> layout = getMultiAdapter((request, context), ILayout)
 
   >>> layout
