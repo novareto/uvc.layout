@@ -1,11 +1,4 @@
-<button type="button" class="navbar-toggle" data-toggle="dropdown"
-	tal:attributes="data-target '#' + viewlet.id">
-  <span class="icon-bar"></span>
-  <span class="icon-bar"></span>
-  <span class="icon-bar"></span>
-</button>
-
-<ul tal:attributes="id viewlet.id" class="dropdown pull-right">
+<ul tal:attributes="id viewlet.id" class="nav  navbar-nav">
   <tal:loop repeat="menu viewlet.menus"> 
     <li tal:attributes="class python: menu['selected'] and 'active' or ''">
       <a tal:attributes="href menu.action"
