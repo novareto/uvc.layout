@@ -3,26 +3,27 @@
 # cklinger@novareto.de
 
 import grokcore.message
-from grok import baseclass, util as grok_util
+from grok.components import ViewSupportMixin
+from grok import baseclass, View as BaseView
 from grok.interfaces import IGrokView
 from grokcore.layout import Page as BasePage
 from megrok.z3ctable import TablePage
 
-from uvc.layout.interfaces import *
-from uvc.layout.slots.components import Menu, MenuItem, SubMenu
-from uvc.layout.forms.event import IAfterSaveEvent
+from .layout import Layout
+from .interfaces import *
+from .slots.components import Menu, MenuItem, SubMenu
+from .forms.event import IAfterSaveEvent
 
 from zope.interface import implementer
 
 
 @implementer(IGrokView)
-class GrokView(object):
-    
-    def application_url(self, name=None, data=None):
-        return grok_util.application_url(self.request, self.context, name, data)
+class GrokView(ViewSupportMixin):
+    pass
 
-    def flash(self, message, type='message'):
-        grokcore.message.send(message, type=type, name='session')
+
+class View(BaseView):
+    baseclass()
 
 
 class Page(GrokView, BasePage):
