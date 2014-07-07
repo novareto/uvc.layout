@@ -40,6 +40,7 @@ class ExtraViews(Menu):
     grok.context(Interface)
     grok.name('extraviews')
 
+
 class SpotMenu(Menu):
     grok.implements(ISpotMenu)
     grok.name('spotmenu')

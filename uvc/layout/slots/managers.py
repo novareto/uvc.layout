@@ -75,6 +75,7 @@ class BeforeActions(grok.ViewletManager):
     grok.implements(IBeforeActions)
     grok.require('zope.View')
 
+
 class ExtraInfo(grok.ViewletManager):
     grok.name('uvcsite.extrainfo')
     grok.context(Interface)

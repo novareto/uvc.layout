@@ -20,7 +20,6 @@ from zeam.form.base.markers import NO_CHANGE
 
 class Form(ApplicationForm):
     grok.baseclass()
-    grok.require('uvc.AddContent')
     legend = ""
 
     @property
@@ -30,6 +29,7 @@ class Form(ApplicationForm):
 
 class AddForm(Form):
     grok.baseclass()
+    grok.require('uvc.AddContent')
     _finishedAdd = False
 
     @base.action(u'Speichern', identifier="uvcsite.add")
