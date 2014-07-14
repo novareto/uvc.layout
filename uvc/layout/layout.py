@@ -2,38 +2,26 @@
 # Copyright (c) 2007-2008 NovaReto GmbH
 # cklinger@novareto.de 
 
-import grok
-
-from grokcore import layout
-from zope import interface
-
-from zope.container.interfaces import IContainer
-from zope.publisher.interfaces import browser
-from zope.traversing.browser import absoluteURL
+import uvclight
+from cromlech.browser.interfaces import ITypedRequest
+from cromlech.container.interfaces import IContainer
+from dolmen.location import get_absolute_url
+from zope.interface import Interface
 
 
-grok.templatedir('templates')
-
-
-class IUVCBaseLayer(browser.IDefaultBrowserLayer):
+class IUVCBaseLayer(ITypedRequest):
     """Base layer for uvc applications
     """
 
 
-class IUVCSkin(IUVCBaseLayer):
-    """Base skin layer for an UVC Site
-    """
-    grok.skin('uvcskin')
-
-
-class Layout(layout.Layout):
-    grok.context(interface.Interface)
-    grok.layer(IUVCBaseLayer)
-    grok.name('')
+class Layout(uvclight.Layout):
+    uvclight.context(Interface)
+    uvclight.layer(IUVCBaseLayer)
+    uvclight.name('')
 
     def update(self):
-        layout.Layout.update(self)
-        self.base = absoluteURL(self.context, self.request)
+        uvclight.Layout.update(self)
+        self.base = get_absolute_url(self.context, self.request)
         if IContainer.providedBy(self.context) and self.base[:-1] != '/':
             self.base = self.base + '/'
         self.view.update()

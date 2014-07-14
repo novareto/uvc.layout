@@ -2,25 +2,19 @@
 # Copyright (c) 2007-2011 NovaReto GmbH
 # cklinger@novareto.de 
 
-import grok
-from zope.interface import Interface
-from zope.component import getUtility
-from zope.browsermenu.interfaces import IBrowserMenu
+import uvclight
+from cromlech.browser import ITemplate
+from grokcore.component import adapter, implementer
 from uvc.layout.interfaces import IPageTop, IFooter, IAboveContent, ITabs
-from zope.component import getMultiAdapter
-from zope.viewlet.interfaces import IContentProvider
 from uvc.layout.slots.managers import Footer
-from megrok.pagetemplate import PageTemplate
-from zope.pagetemplate.interfaces import IPageTemplate
+from zope.component import getMultiAdapter, getUtility
+from zope.interface import Interface
 
 
-grok.templatedir('templates')
-
-
-class GlobalMenuViewlet(grok.Viewlet):
-    grok.viewletmanager(IPageTop)
-    grok.context(Interface)
-    grok.order(20)
+class GlobalMenuViewlet(uvclight.Viewlet):
+    uvclight.viewletmanager(IPageTop)
+    uvclight.context(Interface)
+    uvclight.order(20)
 
     id = "globalmenuviewlet"
 
@@ -32,18 +26,20 @@ class GlobalMenuViewlet(grok.Viewlet):
         self.renderableitems = globalmenu.getRenderableItems()
 
     def render(self):
-        template = getMultiAdapter((self, self.request), IPageTemplate)
+        template = getMultiAdapter((self, self.request), ITemplate)
         return template()
 
 
-class GlobalMenuTemplate(PageTemplate):
-    grok.view(GlobalMenuViewlet)
+@adapter(GlobalMenuViewlet, Interface)
+@implementer(ITemplate)
+def GlobalMenuTemplate(context, request):
+    return uvclight.get_template('globalmenuviewlet.cpt', __file__)
 
 
-class PersonalPreferencesViewlet(grok.Viewlet):
-    grok.viewletmanager(IPageTop)
-    grok.context(Interface)
-    grok.order(40)
+class PersonalPreferencesViewlet(uvclight.Viewlet):
+    uvclight.viewletmanager(IPageTop)
+    uvclight.context(Interface)
+    uvclight.order(40)
 
     id = "personalpreferencesviewlet"
 
@@ -57,18 +53,20 @@ class PersonalPreferencesViewlet(grok.Viewlet):
         return self.view.request.principal.title
 
     def render(self):
-        template = getMultiAdapter((self, self.request), IPageTemplate)
+        template = getMultiAdapter((self, self.request), ITemplate)
         return template()
 
 
-class PersonalPreferencesTemplate(PageTemplate):
-    grok.view(PersonalPreferencesViewlet)
+@adapter(PersonalPreferencesViewlet, Interface)
+@implementer(ITemplate)
+def PersonalPreferencesTemplate(context, request):
+    return uvclight.get_template('personalpreferencesviewlet.cpt', __file__)
 
 
-class DocumentActionsMenuViewlet(grok.Viewlet):
-    grok.viewletmanager(IAboveContent)
-    grok.context(Interface)
-    grok.order(40)
+class DocumentActionsMenuViewlet(uvclight.Viewlet):
+    uvclight.viewletmanager(IAboveContent)
+    uvclight.context(Interface)
+    uvclight.order(40)
 
     id = "documentactionsmenuviewlet"
 
@@ -78,18 +76,20 @@ class DocumentActionsMenuViewlet(grok.Viewlet):
                 IContentProvider, 'documentactions').getMenuItems()
 
     def render(self):
-        template = getMultiAdapter((self, self.request), IPageTemplate)
+        template = getMultiAdapter((self, self.request), ITemplate)
         return template()
 
+    
+@adapter(DocumentActionsMenuViewlet, Interface)
+@implementer(ITemplate)
+def DocumentActionsTemplate(context, request):
+    return uvclight.get_template('documentactionsmenuviewlet.cpt', __file__)
 
-class DocumentActionsTemplate(PageTemplate):
-    grok.view(DocumentActionsMenuViewlet)
 
-
-class FooterViewlet(grok.Viewlet):
-    grok.viewletmanager(Footer)
-    grok.context(Interface)
-    grok.order(10)
+class FooterViewlet(uvclight.Viewlet):
+    uvclight.viewletmanager(Footer)
+    uvclight.context(Interface)
+    uvclight.order(10)
 
     id = "footerviewlet"
 
@@ -98,18 +98,20 @@ class FooterViewlet(grok.Viewlet):
                 (self.view.context, self.request, self.view), IContentProvider, 'footermenu').getMenuItems()
 
     def render(self):
-        template = getMultiAdapter((self, self.request), IPageTemplate)
+        template = getMultiAdapter((self, self.request), ITemplate)
         return template()
 
 
-class FooterTemplate(PageTemplate):
-    grok.view(FooterViewlet)
+@adapter(FooterViewlet, Interface)
+@implementer(ITemplate)
+def FooterTemplate(context, request):
+    return uvclight.get_template('footerviewlet.cpt', __file__)
         
 
-class ExtraViewsViewlet(grok.Viewlet):
-    grok.viewletmanager(ITabs)
-    grok.context(Interface)
-    grok.order(10)
+class ExtraViewsViewlet(uvclight.Viewlet):
+    uvclight.viewletmanager(ITabs)
+    uvclight.context(Interface)
+    uvclight.order(10)
 
     id = "extraviewsviewlet"
 
@@ -119,9 +121,11 @@ class ExtraViewsViewlet(grok.Viewlet):
             IContentProvider, 'extraviews').getMenuItems()
 
     def render(self):
-        template = getMultiAdapter((self, self.request), IPageTemplate)
+        template = getMultiAdapter((self, self.request), ITemplate)
         return template()
 
 
-class ExtraViewsTemplate(PageTemplate):
-    grok.view(ExtraViewsViewlet)
+@adapter(ExtraViewsViewlet, Interface)
+@implementer(ITemplate)
+def ExtraViewsTemplate(context, request):
+    return uvclight.get_template('extraviewstemplate.cpt', __file__)

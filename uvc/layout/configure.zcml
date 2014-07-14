@@ -3,11 +3,6 @@
            xmlns:z3c="http://namespaces.zope.org/z3c"
            xmlns:grok="http://namespaces.zope.org/grok">
 
-  <include package="grok" />
-  <include package="grokcore.layout" file="meta.zcml" />
-  <include package="dolmen.app.breadcrumbs" />
-  <include package="zope.i18n" />
-  <include package="megrok.pagetemplate" file="meta.zcml" />
   <grok:grok package="." />
 
 </configure>

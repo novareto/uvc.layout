@@ -2,15 +2,15 @@
 # Copyright (c) 2007-2011 NovaReto GmbH
 # cklinger@novareto.de 
 
-import grok
+import uvclight
 
 from zope.interface import Interface
 from uvc.layout.slots.interfaces import ISubMenu, IRenderable
 
 
-class Menu(grok.ViewletManager):
-    grok.baseclass()
-    grok.context(Interface)
+class Menu(uvclight.ViewletManager):
+    uvclight.baseclass()
+    uvclight.context(Interface)
 
     def getRenderableItems(self):
         self.update()
@@ -27,17 +27,17 @@ class Menu(grok.ViewletManager):
                     submenu.update()
                     for submenuitem in submenu.viewlets:
                         submenuitems.append(dict(
-                            title = submenuitem.title or grok.title.bind().get(submenuitem),
+                            title = submenuitem.title or uvclight.title.bind().get(submenuitem),
                             id = submenuitem.__class__.__name__.lower(),
-                            description = grok.description.bind().get(submenuitem),
+                            description = uvclight.description.bind().get(submenuitem),
                             selected = submenuitem.selected,
                             icon = submenuitem.icon,
                             action = submenuitem.action))
                 submenuitems.reverse()
                 rc.append(dict(
-                    title = viewlet.title or grok.title.bind().get(viewlet),
+                    title = viewlet.title or uvclight.title.bind().get(viewlet),
                     id = viewlet.__class__.__name__.lower(),
-                    description = grok.description.bind().get(viewlet),
+                    description = uvclight.description.bind().get(viewlet),
                     selected = viewlet.selected,
                     icon = viewlet.icon,
                     submenu = submenuitems,
@@ -46,9 +46,9 @@ class Menu(grok.ViewletManager):
         return rc
 
 
-class MenuItem(grok.Viewlet):
-    grok.baseclass()
-    grok.context(Interface)
+class MenuItem(uvclight.Viewlet):
+    uvclight.baseclass()
+    uvclight.context(Interface)
 
     title = ""
     action = ""
@@ -79,9 +79,9 @@ class MenuItem(grok.Viewlet):
         return u""
 
 
-class SubMenu(MenuItem, grok.ViewletManager):
-    grok.baseclass()
-    grok.implements(ISubMenu)
+class SubMenu(MenuItem, uvclight.ViewletManager):
+    uvclight.baseclass()
+    uvclight.implements(ISubMenu)
 
     def update(self):
-        grok.ViewletManager.update(self)
+        uvclight.ViewletManager.update(self)

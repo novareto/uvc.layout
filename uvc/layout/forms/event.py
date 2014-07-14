@@ -2,8 +2,7 @@
 # Copyright (c) 2007-2011 NovaReto GmbH
 # cklinger@novareto.de 
 
-
-import grok
+import uvclight
 from zope import interface
 import zope.component.interfaces
 
@@ -14,7 +13,7 @@ class IAfterSaveEvent(zope.component.interfaces.IObjectEvent):
 
 
 class AfterSaveEvent(zope.component.interfaces.ObjectEvent):
-    grok.implements(IAfterSaveEvent)
+    uvclight.implements(IAfterSaveEvent)
 
     def __init__(self, object, request):
         self.object = object

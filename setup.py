@@ -22,15 +22,8 @@ setup(name='uvc.layout',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'dolmen.app.breadcrumbs',
-          'grok',
-          'grokcore.layout',
           'js.jquery',
-          'megrok.menu',
-          'megrok.resourceviewlet',
           'setuptools',
-          'z3c.testsetup',
-          'zope.app.wsgi',
       ],
       entry_points={
           'fanstatic.libraries': [

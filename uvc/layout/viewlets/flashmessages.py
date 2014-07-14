@@ -2,21 +2,21 @@
 # Copyright (c) 2007-2011 NovaReto GmbH
 # cklinger@novareto.de 
 
-import grok
-
+import uvclight
+from dolmen.message import receive
 from uvc.layout.interfaces import IPageTop
-from grokcore.message import receive
 from zope.interface import Interface, moduleProvides
 
-grok.templatedir('templates')
 
-class FlashMessages(grok.Viewlet):
-    grok.baseclass()
-    grok.order(200)
-    grok.context(Interface)
-    grok.name('uvcsite.messages')
-    grok.viewletmanager(IPageTop)
+class FlashMessages(uvclight.Viewlet):
+    uvclight.baseclass()
+    uvclight.order(200)
+    uvclight.context(Interface)
+    uvclight.name('uvcsite.messages')
+    uvclight.viewletmanager(IPageTop)
 
+    template = uvclight.get_template('flashmessages.cpt', __file__)
+    
     def update(self):
         received = receive()
         if received is not None:

@@ -2,17 +2,15 @@
 # Copyright (c) 2007-2011 NovaReto GmbH
 # cklinger@novareto.de 
 
-import grok
-
+import uvclight
 from zope.interface import Interface
 from uvc.layout.interfaces import IPageTop
 
 
-grok.templatedir('templates')
+class BGHeader(uvclight.Viewlet):
+    uvclight.baseclass()
+    uvclight.viewletmanager(IPageTop)
+    uvclight.context(Interface)
+    uvclight.order(10)
 
-
-class BGHeader(grok.Viewlet):
-    grok.viewletmanager(IPageTop)
-    grok.context(Interface)
-    grok.order(10)
-    grok.baseclass()
+    template = uvclight.get_template('bgheader.cpt', __file__)

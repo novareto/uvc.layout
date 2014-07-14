@@ -2,59 +2,57 @@
 # Copyright (c) 2007-2011 NovaReto GmbH
 # cklinger@novareto.de 
 
-import grok
-
-from megrok.pagetemplate import PageTemplate
+import uvclight
+from cromlech.browser import ITemplate
+from grokcore.component import adapter, implementer
 from uvc.layout.interfaces import *
 from uvc.layout.slots.components import Menu
 from zope.component import getMultiAdapter
 from zope.interface import Interface
-from zope.pagetemplate.interfaces import IPageTemplate
-
-
-grok.templatedir('templates')
 
 
 class GlobalMenu(Menu):
-    grok.implements(IGlobalMenu)
-    grok.name('globalmenu')
+    uvclight.implements(IGlobalMenu)
+    uvclight.name('globalmenu')
 
 
 class Footer(Menu):
-    grok.implements(IFooter)
-    grok.name('footermenu')
+    uvclight.implements(IFooter)
+    uvclight.name('footermenu')
 
 
 class PersonalPreferences(Menu):
-    grok.implements(IPersonalPreferences)
-    grok.name('personalpreferences')
+    uvclight.implements(IPersonalPreferences)
+    uvclight.name('personalpreferences')
 
 
 class DocumentActionsMenu(Menu):
-    grok.implements(IDocumentActions)
-    grok.name('documentactions')
+    uvclight.implements(IDocumentActions)
+    uvclight.name('documentactions')
 
 
 class ExtraViews(Menu):
-    grok.implements(IExtraViews)
-    grok.context(Interface)
-    grok.name('extraviews')
+    uvclight.implements(IExtraViews)
+    uvclight.context(Interface)
+    uvclight.name('extraviews')
 
 
 class SpotMenu(Menu):
-    grok.implements(ISpotMenu)
-    grok.name('spotmenu')
+    uvclight.implements(ISpotMenu)
+    uvclight.name('spotmenu')
 
 
 class PersonalMenu(Menu):
-    grok.implements(IPersonalMenu)
-    grok.context(Interface)
-    grok.name('personalmenu')
+    uvclight.implements(IPersonalMenu)
+    uvclight.context(Interface)
+    uvclight.name('personalmenu')
 
     def render(self):
-        template = getMultiAdapter((self, self.request), IPageTemplate)
+        template = getMultiAdapter((self, self.request), ITemplate)
         return template()
 
 
-class PersonalMenuTemplate(PageTemplate):
-    grok.view(PersonalMenu)
+@adapter(PersonalMenu, Interface)
+@implementer(ITemplate)
+def PersonalMenuTemplate(context, request):
+    return uvclight.get_template('personalmenutemplate.cpt', __file__)

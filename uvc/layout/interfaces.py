@@ -1,91 +1,91 @@
 # -*- coding: utf-8 -*-
 
-from zope.interface import Interface
+from cromlech.browser import ISlot
 
 
-class IPageTop(Interface):
+class IPageTop(ISlot):
     """Marker For the area that sits at the top of the page.
     """
 
 
-class ITabs(Interface):
+class ITabs(ISlot):
     """Marker for the action tabs.
     """
     
 
-class IAboveContent(Interface):
+class IAboveContent(ISlot):
     """Marker For the area that sits above the page body.
     """
 
 
-class IBelowContent(Interface):
+class IBelowContent(ISlot):
     """Marker For the area that sits under the page body.
     """
 
 
-class IHeaders(Interface):
+class IHeaders(ISlot):
     """Marker For Headers
     """
 
 
-class IToolbar(Interface):
+class IToolbar(ISlot):
     """Marker for Toolbar
     """
 
 
-class IDocumentActions(Interface):
+class IDocumentActions(ISlot):
     """Marker for DocumentActions
     """
 
 
-class IPersonalPreferences(Interface):
+class IPersonalPreferences(ISlot):
     """Marker for PersonalPreferences
     """
 
 
-class IGlobalMenu(Interface):
+class IGlobalMenu(ISlot):
     """Marker for GlobalMenu
     """
 
 
-class IPersonalMenu(Interface):
+class IPersonalMenu(ISlot):
     """Marker for PersonalMenu
     """
 
 
-class ISidebar(Interface):
+class ISidebar(ISlot):
     """Marker for Sitebar
     """
 
 
-class IFooter(Interface):
+class IFooter(ISlot):
     """Marker for Footer
     """
 
 
-class IPanels(Interface):
+class IPanels(ISlot):
     """Marker interface for the panels display.
     """
 
 
-class IHelp(Interface):
+class IHelp(ISlot):
     """Marker for Help
     """
 
 
-class IExtraInfo(Interface):
+class IExtraInfo(ISlot):
     """Marker for ExtraInfo in Forms
     """
 
 
-class IExtraViews(Interface):
+class IExtraViews(ISlot):
     """Marker for additional Views for Folders
        Objects etc...
     """
 
-class ISpotMenu(Interface):
+class ISpotMenu(ISlot):
     """ Special Menu """
 
 
-class IBeforeActions(Interface):
-    """ Marker Interfae"""
+class IBeforeActions(ISlot):
+    """ Marker Interface"""

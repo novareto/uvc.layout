@@ -1,2 +1,3 @@
 # Make me a Package
-from components import *
+
+from .components import *
