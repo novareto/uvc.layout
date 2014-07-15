@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from cromlech.browser import ISlot
+from dolmen.menu import IMenu
 
 
 class IPageTop(ISlot):
@@ -48,7 +49,7 @@ class IGlobalMenu(ISlot):
     """
 
 
-class IPersonalMenu(ISlot):
+class IPersonalMenu(IMenu):
     """Marker for PersonalMenu
     """
 
@@ -58,7 +59,7 @@ class ISidebar(ISlot):
     """
 
 
-class IFooter(ISlot):
+class IFooter(IMenu):
     """Marker for Footer
     """
 
@@ -83,7 +84,7 @@ class IExtraViews(ISlot):
        Objects etc...
     """
 
-class ISpotMenu(ISlot):
+class ISpotMenu(IMenu):
     """ Special Menu """
 
 
