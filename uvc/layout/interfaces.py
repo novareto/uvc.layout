@@ -34,7 +34,7 @@ class IToolbar(ISlot):
     """
 
 
-class IDocumentActions(ISlot):
+class IDocumentActions(IMenu):
     """Marker for DocumentActions
     """
 
