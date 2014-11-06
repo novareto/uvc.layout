@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2007-2011 NovaReto GmbH
-# cklinger@novareto.de 
+# cklinger@novareto.de
 
 import grok
 
@@ -58,3 +58,9 @@ class PersonalMenu(Menu):
 
 class PersonalMenuTemplate(PageTemplate):
     grok.view(PersonalMenu)
+
+
+class QuickLinks(Menu):
+    grok.implements(IQuickLinks)
+    grok.name('quicklinks')
+

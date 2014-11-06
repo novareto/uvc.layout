@@ -11,7 +11,7 @@ class IPageTop(Interface):
 class ITabs(Interface):
     """Marker for the action tabs.
     """
-    
+
 
 class IAboveContent(Interface):
     """Marker For the area that sits above the page body.
@@ -35,6 +35,11 @@ class IToolbar(Interface):
 
 class IDocumentActions(Interface):
     """Marker for DocumentActions
+    """
+
+
+class IQuickLinks(Interface):
+    """Marker for Qucklinks
     """
 
 
