@@ -44,7 +44,7 @@ class Tabs(grok.ViewletManager):
         res = self.content()
         if not res:
             return u""
-        return """<ul class='nav nav-pills'>%s</ul>""" % res
+        return """<ul class='nav navbar-nav navbar-right'>%s</ul>""" % res
 
 
 class BelowContent(grok.ViewletManager):
