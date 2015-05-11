@@ -16,8 +16,17 @@ from zope.pagetemplate.interfaces import IPageTemplate
 
 grok.templatedir('templates')
 
+class Menu(grok.Viewlet):
+    grok.baseclass()
+    
+    def default_namespace(self):
+        namespace = grok.Viewlet.default_namespace(self)
+        namespace['entries'] = self.menus
+        namespace['component'] = self
+        return namespace
 
-class GlobalMenuViewlet(grok.Viewlet):
+
+class GlobalMenuViewlet(Menu):
     grok.viewletmanager(IPageTop)
     grok.context(Interface)
     grok.order(20)
@@ -26,8 +35,8 @@ class GlobalMenuViewlet(grok.Viewlet):
 
     def update(self):
         globalmenu = getMultiAdapter(
-                (self.view.context, self.request, self.view),
-                IContentProvider, 'globalmenu')
+            (self.view.context, self.request, self.view),
+            IContentProvider, 'globalmenu')
         self.menus = globalmenu.getMenuItems()
         self.renderableitems = globalmenu.getRenderableItems()
 
@@ -40,7 +49,7 @@ class GlobalMenuTemplate(PageTemplate):
     grok.view(GlobalMenuViewlet)
 
 
-class PersonalPreferencesViewlet(grok.Viewlet):
+class PersonalPreferencesViewlet(Menu):
     grok.viewletmanager(IPageTop)
     grok.context(Interface)
     grok.order(40)
@@ -65,7 +74,7 @@ class PersonalPreferencesTemplate(PageTemplate):
     grok.view(PersonalPreferencesViewlet)
 
 
-class DocumentActionsMenuViewlet(grok.Viewlet):
+class DocumentActionsMenuViewlet(Menu):
     grok.viewletmanager(IAboveContent)
     grok.context(Interface)
     grok.order(40)
@@ -86,7 +95,7 @@ class DocumentActionsTemplate(PageTemplate):
     grok.view(DocumentActionsMenuViewlet)
 
 
-class FooterViewlet(grok.Viewlet):
+class FooterViewlet(Menu):
     grok.viewletmanager(Footer)
     grok.context(Interface)
     grok.order(10)
@@ -106,7 +115,7 @@ class FooterTemplate(PageTemplate):
     grok.view(FooterViewlet)
         
 
-class ExtraViewsViewlet(grok.Viewlet):
+class ExtraViewsViewlet(Menu):
     grok.viewletmanager(ITabs)
     grok.context(Interface)
     grok.order(10)
