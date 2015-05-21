@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2007-2011 NovaReto GmbH
-# cklinger@novareto.de 
+# cklinger@novareto.de
 
 import grok
 from zope.interface import Interface
-from zope.component import getUtility
-from zope.browsermenu.interfaces import IBrowserMenu
 from uvc.layout.interfaces import IPageTop, IFooter, IAboveContent, ITabs
 from zope.component import getMultiAdapter
 from zope.viewlet.interfaces import IContentProvider
@@ -16,9 +14,10 @@ from zope.pagetemplate.interfaces import IPageTemplate
 
 grok.templatedir('templates')
 
+
 class Menu(grok.Viewlet):
     grok.baseclass()
-    
+
     def default_namespace(self):
         namespace = grok.Viewlet.default_namespace(self)
         namespace['entries'] = self.menus
@@ -58,8 +57,8 @@ class PersonalPreferencesViewlet(Menu):
 
     def update(self):
         self.menus = getMultiAdapter(
-                (self.view.context, self.request, self.view),
-                IContentProvider, 'personalpreferences').getMenuItems()
+            (self.view.context, self.request, self.view),
+            IContentProvider, 'personalpreferences').getMenuItems()
 
     @property
     def username(self):
@@ -83,8 +82,8 @@ class DocumentActionsMenuViewlet(Menu):
 
     def update(self):
         self.menus = getMultiAdapter(
-                (self.view.context, self.request, self.view),
-                IContentProvider, 'documentactions').getMenuItems()
+            (self.view.context, self.request, self.view),
+            IContentProvider, 'documentactions').getMenuItems()
 
     def render(self):
         template = getMultiAdapter((self, self.request), IPageTemplate)
@@ -104,7 +103,8 @@ class FooterViewlet(Menu):
 
     def update(self):
         self.menus = getMultiAdapter(
-                (self.view.context, self.request, self.view), IContentProvider, 'footermenu').getMenuItems()
+            (self.view.context, self.request, self.view),
+            IContentProvider, 'footermenu').getMenuItems()
 
     def render(self):
         template = getMultiAdapter((self, self.request), IPageTemplate)
@@ -113,7 +113,7 @@ class FooterViewlet(Menu):
 
 class FooterTemplate(PageTemplate):
     grok.view(FooterViewlet)
-        
+
 
 class ExtraViewsViewlet(Menu):
     grok.viewletmanager(ITabs)
