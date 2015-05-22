@@ -7,32 +7,30 @@ import grok
 
 from megrok.resourceviewlet import ResourcesManager
 from uvc.layout.interfaces import *
+from zope.component import queryMultiAdapter
 from zope.interface import Interface
+from zope.pagetemplate.interfaces import IPageTemplate
+
 
 grok.templatedir('templates')
-
-
-class Resources(ResourcesManager):
-    grok.name('uvc-resources')
-    grok.context(Interface)
 
 
 class Headers(grok.ViewletManager):
     """Viewlet Manager for the Header
     """
-    grok.name('uvc-headers')
+    grok.name('headers')
     grok.context(Interface)
     grok.implements(IHeaders)
 
 
 class AboveContent(grok.ViewletManager):
-    grok.name('uvc-above-body')
+    grok.name('above-body')
     grok.context(Interface)
     grok.implements(IAboveContent)
 
 
 class Tabs(grok.ViewletManager):
-    grok.name('uvc-tabs')
+    grok.name('tabs')
     grok.context(Interface)
     grok.implements(ITabs)
 
@@ -48,7 +46,7 @@ class Tabs(grok.ViewletManager):
 
 
 class BelowContent(grok.ViewletManager):
-    grok.name('uvc-below-body')
+    grok.name('below-body')
     grok.context(Interface)
     grok.implements(IBelowContent)
 
@@ -56,7 +54,7 @@ class BelowContent(grok.ViewletManager):
 class PageTop(grok.ViewletManager):
     """ViewletManager for the PageTop
     """
-    grok.name('uvc-pagetop')
+    grok.name('pagetop')
     grok.context(Interface)
     grok.implements(IPageTop)
 
@@ -64,7 +62,7 @@ class PageTop(grok.ViewletManager):
 class Footer(grok.ViewletManager):
     """ViewletManager for the PageTop
     """
-    grok.name('uvc-footer')
+    grok.name('footer')
     grok.context(Interface)
     grok.require('zope.View')
 
@@ -81,4 +79,3 @@ class ExtraInfo(grok.ViewletManager):
     grok.context(Interface)
     grok.implements(IExtraInfo)
     grok.require('zope.View')
-

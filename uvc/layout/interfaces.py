@@ -1,31 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from zope.interface import Interface
-
-
-class IPageTop(Interface):
-    """Marker For the area that sits at the top of the page.
-    """
-
-
-class ITabs(Interface):
-    """Marker for the action tabs.
-    """
-
-
-class IAboveContent(Interface):
-    """Marker For the area that sits above the page body.
-    """
-
-
-class IBelowContent(Interface):
-    """Marker For the area that sits under the page body.
-    """
-
-
-class IHeaders(Interface):
-    """Marker For Headers
-    """
+from uvc.entities.browser.managers import *
 
 
 class IToolbar(Interface):
@@ -60,11 +36,6 @@ class IPersonalMenu(Interface):
 
 class ISidebar(Interface):
     """Marker for Sitebar
-    """
-
-
-class IFooter(Interface):
-    """Marker for Footer
     """
 
 
