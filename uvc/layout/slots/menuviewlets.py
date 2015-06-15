@@ -79,6 +79,7 @@ class DocumentActionsMenuViewlet(Menu):
     grok.order(40)
 
     id = "documentactionsmenuviewlet"
+    name = "Document actions"
 
     def update(self):
         self.menus = getMultiAdapter(
