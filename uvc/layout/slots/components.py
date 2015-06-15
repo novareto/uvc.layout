@@ -46,6 +46,7 @@ class Menu(grok.ViewletManager):
                     selected = viewlet.selected,
                     icon = viewlet.icon,
                     submenu = submenuitems,
+                    url = viewlet.action,
                     action = viewlet.action)))
         rc.reverse()
         return rc
