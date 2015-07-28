@@ -16,9 +16,10 @@ from dolmen.forms import wizard
 from zeam.form.base.markers import SUCCESS, FAILURE
 from dolmen.forms.wizard import MF as _
 from zeam.form.base.markers import NO_CHANGE
+from grok.components import ViewSupportMixin
 
 
-class Form(ApplicationForm):
+class Form(ApplicationForm, ViewSupportMixin):
     grok.baseclass()
     legend = ""
 

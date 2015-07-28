@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2007-2011 NovaReto GmbH
-# cklinger@novareto.de 
+# cklinger@novareto.de
 
 
 import grok
@@ -15,7 +15,7 @@ from zope.pagetemplate.interfaces import IPageTemplate
 grok.templatedir('templates')
 
 
-class Headers(grok.ViewletManager):
+class Headers(ResourcesManager):
     """Viewlet Manager for the Header
     """
     grok.name('headers')
