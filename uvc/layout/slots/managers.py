@@ -6,6 +6,7 @@
 import grok
 
 from megrok.resourceviewlet import ResourcesManager
+from megrok.resourceviewlet.components import IResourceViewlet
 from uvc.layout.interfaces import *
 from zope.component import queryMultiAdapter
 from zope.interface import Interface
@@ -21,6 +22,16 @@ class Headers(ResourcesManager):
     grok.name('headers')
     grok.context(Interface)
     grok.implements(IHeaders)
+
+    def update(self):
+        super(Headers, self).update()
+        for viewlet in self.viewlets:
+            if IResourceViewlet.providedBy(viewlet):
+                viewlet.render()
+
+    def render(self):
+        results = [v.render() for v in self.viewlets if not IResourceViewlet.providedBy(v)]
+        return "\n".join([r for r in results if r.strip()])
 
 
 class AboveContent(grok.ViewletManager):
